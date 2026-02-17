@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { FiMonitor, FiShoppingCart, FiSmartphone, FiSettings, FiDatabase, FiShield } from 'react-icons/fi';
 
 const services = [
     {
         id: '01',
-        emoji: '💻',
+        icon: FiMonitor,
         title: 'Web Development',
         short: 'React · Laravel · Modern Stack',
         description:
@@ -13,7 +14,7 @@ const services = [
     },
     {
         id: '02',
-        emoji: '🛒',
+        icon: FiShoppingCart,
         title: 'E-Commerce Development',
         short: 'Stores · Payments · Inventory',
         description:
@@ -23,7 +24,7 @@ const services = [
     },
     {
         id: '03',
-        emoji: '📱',
+        icon: FiSmartphone,
         title: 'Responsive UI/UX Design',
         short: 'Figma · Prototyping · Design Systems',
         description:
@@ -33,7 +34,7 @@ const services = [
     },
     {
         id: '04',
-        emoji: '⚙️',
+        icon: FiSettings,
         title: 'Custom Software',
         short: 'Automation · Workflows · SaaS',
         description:
@@ -43,7 +44,7 @@ const services = [
     },
     {
         id: '05',
-        emoji: '🌐',
+        icon: FiDatabase,
         title: 'API Integration',
         short: 'REST · Payments · Cloud APIs',
         description:
@@ -53,7 +54,7 @@ const services = [
     },
     {
         id: '06',
-        emoji: '🔒',
+        icon: FiShield,
         title: 'Maintenance & Support',
         short: 'Bugs · Speed · Security',
         description:
@@ -123,14 +124,14 @@ const CoreServicesSection = () => {
                             >
                                 {/* Top Row */}
                                 <div className="flex items-start justify-between mb-6">
-                                    {/* Emoji Icon */}
+                                    {/* Icon Container */}
                                     <div
                                         className={`
                                             w-[60px] h-[60px] rounded-2xl bg-[#2a9fd8]/10 border-2 border-[#2a9fd8]/30
-                                            flex items-center justify-center text-[28px] 
+                                            flex items-center justify-center 
                                         `}
                                     >
-                                        {service.emoji}
+                                        <service.icon className="text-[#2a9fd8]" size={28} />
                                     </div>
 
                                     {/* Number + Tag */}
