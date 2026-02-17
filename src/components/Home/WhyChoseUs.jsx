@@ -51,13 +51,13 @@ const WhyChooseUs = () => {
                     {/* SVG Layer for Arc and Connections */}
                     <div className="absolute inset-0 z-10 pointer-events-none">
                         <svg className="w-full h-full" viewBox="0 0 1200 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            {/* The Professional Arc - Perfectly Concentric with Center Box */}
+                            {/* The Professional Arc */}
                             <path
                                 d="M 389.2,71 A 200,200 0 0,1 389.2,429"
                                 stroke="#cbd5e1"
                                 strokeWidth="3"
                                 fill="none"
-                                className={`transition-all duration-1000 delay-500 ${isVisible ? 'dash-animate' : ''}`}
+                                className={`transition-all duration-1000 delay-500 ${isVisible ? 'stroke-dash-animate' : ''}`}
                             />
 
                             {/* Points and Dotted Lines */}
@@ -68,7 +68,6 @@ const WhyChooseUs = () => {
 
                                 return (
                                     <g key={i}>
-                                        {/* Horizontal Dotted Line */}
                                         <line
                                             x1={x + 10} y1={y} x2="680" y2={y}
                                             stroke="#6366f1"
@@ -77,7 +76,6 @@ const WhyChooseUs = () => {
                                             className={`transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
                                             style={{ transitionDelay: `${1000 + (i * 100)}ms` }}
                                         />
-                                        {/* White Dot Anchor */}
                                         <circle
                                             cx={x} cy={y} r="8"
                                             fill="white"
@@ -94,17 +92,16 @@ const WhyChooseUs = () => {
 
                     {/* Content Layer */}
                     <div className="relative z-20 hidden lg:grid grid-cols-12 h-full items-center">
-                        {/* Left: Main Shield/Circle */}
+                        {/* Left: Main Circle */}
                         <div className="col-span-5 flex justify-end pr-10">
                             <div
-                                className={`w-[320px] h-[320px] rounded-full flex flex-col items-center justify-center p-8 text-center shadow-[0_30px_60px_rgba(30,27,75,0.25)] border-[10px] border-white transition-all duration-[1200ms] cubic-bezier(0.34, 1.56, 0.64, 1) transform ${isVisible ? 'scale-100 opacity-100 translate-y-0' : 'scale-90 opacity-0 translate-y-10'}`}
-                                style={{ background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)' }}
+                                className={`w-[320px] h-[320px] rounded-full flex flex-col items-center justify-center p-8 text-center shadow-[0_30px_60px_rgba(30,27,75,0.25)] border-[10px] border-white transition-all duration-[1200ms] transform bg-gradient-to-br from-[#1e1b4b] to-[#312e81] ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isVisible ? 'scale-100 opacity-100 translate-y-0' : 'scale-90 opacity-0 translate-y-10'}`}
                             >
                                 <div className="text-[100px] font-black text-white leading-none mb-1">5</div>
                                 <div className="text-white space-y-1">
                                     <p className="text-xl font-bold tracking-tight">Reasons</p>
                                     <p className="text-base opacity-80 italic">To Partner With</p>
-                                    <p className="text-lg font-black tracking-widest uppercase">BITCODERLABS</p>
+                                    <p className="text-lg font-black tracking-widest uppercase text-nowrap">BITCODERLABS</p>
                                 </div>
                             </div>
                         </div>
@@ -112,27 +109,21 @@ const WhyChooseUs = () => {
                         {/* Middle: Spacer */}
                         <div className="col-span-2"></div>
 
-                        {/* Right: Items aligned to SVG points */}
+                        {/* Right: Items */}
                         <div className="col-span-5 h-[420px] flex flex-col justify-between py-2">
                             {advantages.map((adv, index) => (
                                 <div
                                     key={index}
-                                    className={`flex items-center gap-6 transition-all duration-1000 transform cubic-bezier(0.22, 1, 0.36, 1) ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+                                    className={`flex items-center gap-6 transition-all duration-1000 transform ease-[cubic-bezier(0.22,1,0.36,1)] ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
                                     style={{ transitionDelay: `${800 + (index * 150)}ms` }}
                                 >
-                                    {/* Number Badge */}
                                     <div className="relative group flex-shrink-0">
                                         <div className="absolute inset-[-4px] rounded-full border-2 border-dotted border-indigo-300 group-hover:rotate-90 transition-transform duration-1000"></div>
-                                        <div
-                                            className="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-lg shadow-lg transform transition-transform group-hover:scale-110"
-                                            style={{ background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)' }}
-                                        >
+                                        <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-lg shadow-lg transform transition-transform group-hover:scale-110 bg-gradient-to-br from-[#1e1b4b] to-[#312e81]">
                                             {adv.number}
                                         </div>
                                     </div>
-                                    ...
-                                    {/* Text Title */}
-                                    <h4 className="text-xl font-bold text-indigo-950 italic tracking-tight hover:text-primary transition-colors cursor-default">
+                                    <h4 className="text-xl font-bold text-indigo-950 italic tracking-tight hover:text-[#2a9fd8] transition-colors cursor-default">
                                         {adv.title}
                                     </h4>
                                 </div>
@@ -141,15 +132,10 @@ const WhyChooseUs = () => {
                     </div>
                 </div>
 
-                {/* Mobile/Tablet View */}
+                {/* Mobile View */}
                 <div className="lg:hidden flex flex-col items-center space-y-8">
-                    {/* Central Circle for Mobile */}
                     <div
-                        className={`w-[240px] h-[240px] rounded-full flex flex-col items-center justify-center p-6 text-center shadow-2xl transform transition-all duration-1000 ${isVisible ? 'scale-100 opacity-100' : 'scale-90 opacity-0'}`}
-                        style={{
-                            background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)',
-                            border: '8px solid white'
-                        }}
+                        className={`w-[240px] h-[240px] rounded-full flex flex-col items-center justify-center p-6 text-center shadow-2xl transform transition-all duration-1000 bg-gradient-to-br from-[#1e1b4b] to-[#312e81] border-[8px] border-white ${isVisible ? 'scale-100 opacity-100' : 'scale-90 opacity-0'}`}
                     >
                         <div className="text-[70px] font-black text-white leading-none">5</div>
                         <div className="text-white">
@@ -158,7 +144,6 @@ const WhyChooseUs = () => {
                         </div>
                     </div>
 
-                    {/* List for Mobile */}
                     <div className="w-full space-y-4">
                         {advantages.map((adv, index) => (
                             <div
@@ -166,10 +151,7 @@ const WhyChooseUs = () => {
                                 className={`flex items-center gap-5 p-3 bg-white rounded-2xl shadow-md transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
                                 style={{ transitionDelay: `${index * 150}ms` }}
                             >
-                                <div
-                                    className="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-base flex-shrink-0"
-                                    style={{ background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)' }}
-                                >
+                                <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-base flex-shrink-0 bg-gradient-to-br from-[#1e1b4b] to-[#312e81]">
                                     {adv.number}
                                 </div>
                                 <h4 className="text-lg font-bold text-indigo-900 italic">{adv.title}</h4>
@@ -179,28 +161,17 @@ const WhyChooseUs = () => {
                 </div>
             </div>
 
-            <style jsx>{`
-                @keyframes dash {
-                    to {
-                        stroke-dashoffset: 0;
-                    }
+            <style>{`
+                @keyframes strokeDash {
+                    to { stroke-dashoffset: 0; }
                 }
-                .dash-animate {
+                .stroke-dash-animate {
                     stroke-dasharray: 1000;
                     stroke-dashoffset: 1000;
-                    animation: dash 2.5s cubic-bezier(0.45, 0, 0.55, 1) forwards;
-                }
-                .cubic-bezier {
-                   transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
-                }
-                @media (max-width: 1024px) {
-                    section {
-                        padding-top: 4rem;
-                        padding-bottom: 4rem;
-                    }
+                    animation: strokeDash 2.5s cubic-bezier(0.45, 0, 0.55, 1) forwards;
                 }
             `}</style>
-        </section >
+        </section>
     );
 };
 

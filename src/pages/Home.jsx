@@ -5,7 +5,6 @@ import ExpertiseSection from '../components/Home/Expertisesection'
 import WhyChooseUs from '../components/Home/WhyChoseUs'
 import Stats from '../components/Home/Stats'
 import Testimonials from '../components/Home/Testimonials'
-import FinalCTA from '../components/Home/FinalCTA'
 
 function Home() {
     return (
@@ -17,7 +16,6 @@ function Home() {
                 <CEOMessage />
                 <WhyChooseUs />
                 <Testimonials />
-                <FinalCTA />
             </div>
         </div>
     )

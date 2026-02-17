@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LeadershipSlider from './LeadershipSlider';
-import CardCarousel from './CardCarousel';
+import TeamMembers from './TeamMembers';
 
 const CEOMessage = () => {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -59,7 +59,7 @@ const CEOMessage = () => {
 
                 {/* 3D Carousel at Bottom */}
                 <div className="mt-20">
-                    <div className="text-center mb-16">
+                    {/* <div className="text-center mb-16">
                         <header className="text-center">
                             <h2 className="text-[#2a9fd8] font-bold uppercase tracking-[0.2em] text-sm mb-4">
                                 Digital Showcase
@@ -69,8 +69,8 @@ const CEOMessage = () => {
                             </h1>
                             <p className="text-gray-500 mt-4 max-w-xl mx-auto font-medium">A curated selection of our most innovative projects and digital solutions.</p>
                         </header>
-                    </div>
-                    <CardCarousel />
+                    </div> */}
+                    <TeamMembers />
                 </div>
             </div>
         </section>

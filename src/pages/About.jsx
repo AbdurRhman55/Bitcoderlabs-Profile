@@ -1,17 +1,29 @@
 import React from 'react';
+import Hero from '../components/About/Hero';
+// import Mission from '../components/About/Mission';
+// import Team from '../components/About/Team';
+import OurMission from '../components/About/OurMission';
+import OurCoreValues from '../components/About/OurCoreValues';
+import OurExperties from '../components/About/OurExperties';
+import TeamMembers from '../components/Home/TeamMembers';
 
 const About = () => {
     return (
-        <div className="bg-white min-h-screen py-24 px-6">
-            <div className="max-w-4xl mx-auto text-center">
-                <h1 className="text-5xl font-extrabold text-gray-900 mb-8">About Bitcoderlabs</h1>
-                <p className="text-xl text-gray-600 leading-relaxed mb-12">
-                    We are a dedicated team of developers, designers, and educators committed to pushing the boundaries of digital innovation. Our mission is to empower businesses and individuals through high-quality software solutions and expert training.
-                </p>
-                <div className="aspect-video bg-[#eef2f4ff] rounded-3xl flex items-center justify-center text-[#2a9fd8] font-bold text-2xl shadow-inner border-4 border-white">
-                    Our Story Image/Video Placeholder
+        <div className="bg-white">
+            <Hero />
+            <OurMission />
+            <OurCoreValues />
+            <OurExperties />
+            <TeamMembers />
+
+            {/* <div className="max-w-7xl mx-auto px-6 pb-24 lg:pb-32">
+                <div className="">
+                    <div className="">
+                        <Mission />
+                        <Team />
+                    </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

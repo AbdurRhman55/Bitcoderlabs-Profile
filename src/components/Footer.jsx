@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiGithub, FiTwitter, FiLinkedin, FiInstagram, FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
+import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -22,10 +23,10 @@ const Footer = () => {
                         </p>
                         <div className="mt-10 flex gap-4">
                             {[
-                                { icon: FiLinkedin, link: "#" },
-                                { icon: FiGithub, link: "#" },
-                                { icon: FiTwitter, link: "#" },
-                                { icon: FiInstagram, link: "#" }
+                                { icon: FaFacebookF, link: "https://www.facebook.com/BitCoderLabs" },
+                                { icon: FaTwitter, link: "https://twitter.com/BitCoderLabs" },
+                                { icon: FaLinkedinIn, link: "https://www.linkedin.com/company/bitcoderlabs/posts/?feedView=all" },
+                                { icon: FaInstagram, link: "https://www.instagram.com/bitcoderlabs/" }
                             ].map((social, i) => (
                                 <a
                                     key={i}
@@ -100,7 +101,7 @@ const Footer = () => {
 
                 <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
                     <p className="text-gray-500 font-medium text-sm">
-                        &copy; 2026 Bitcoderlabs. Designed with <span className="text-primary">passion</span> in Mardan.
+                        &copy; 2026 Bitcoderlabs.
                     </p>
                     <div className="flex items-center gap-8 text-gray-500 font-bold text-[10px] uppercase tracking-widest">
                         <span className="flex items-center gap-2">

@@ -2,7 +2,7 @@ import React from 'react';
 
 const NavigationDots = ({ count, activeIndex, onChange, messages }) => {
     return (
-        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 z-20 mb-3 ">
+        <div className="flex justify-center mt-8 space-x-6">
             <div className="flex space-x-6">
                 {Array.from({ length: count }).map((_, index) => (
                     <button
