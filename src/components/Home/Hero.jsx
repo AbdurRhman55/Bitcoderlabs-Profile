@@ -3,14 +3,18 @@ import { Link } from 'react-router-dom';
 const HeroSection = () => {
     return (
         <div className="relative w-full h-screen overflow-hidden flex flex-col items-center">
-            {/* Video Background */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                <iframe
-                    src="https://player.vimeo.com/video/1131796102?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
-                    className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-full min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 border-none"
-                    allow="autoplay; fullscreen"
-                ></iframe>
-
+            {/* Local Video Background */}
+            <div className="absolute inset-0 z-0">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                >
+                    <source src="/hero-video.mp4.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
             </div>
 
             {/* Main Content */}
