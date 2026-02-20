@@ -79,47 +79,47 @@ const Certifications = () => {
                     {/* ── Right Side: Company Certificate Details ── */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 lg:gap-y-16 gap-x-12">
 
-                        {/* Certificate 1 */}
+                        {/* Certificate 1: NAVTTC */}
                         <div className="group">
                             <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
                                 <FiAward size={24} />
                             </div>
-                            <h4 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">NAVTTC Partnership</h4>
+                            <h4 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">NAVTTC Certification</h4>
                             <p className="text-slate-500 text-sm leading-relaxed font-medium">
-                                Officially recognized government-standard technical training path integrated with industrial excellence.
+                                National recognized government-standard technical qualification for vocational excellence in IT.
                             </p>
                         </div>
 
-                        {/* Certificate 2 */}
+                        {/* Certificate 2: Company Cert */}
                         <div className="group">
                             <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
                                 <FiHexagon size={24} />
                             </div>
-                            <h4 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Academy Excellence</h4>
+                            <h4 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">BitCoderLabs Company Cert</h4>
                             <p className="text-slate-500 text-sm leading-relaxed font-medium">
-                                High-intensity curriculum certificate validating mastery in full-stack architecture and logic.
+                                Official verification of professional competency within our elite software house environment.
                             </p>
                         </div>
 
-                        {/* Certificate 3 */}
-                        <div className="group">
-                            <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
-                                <FiBriefcase size={24} />
-                            </div>
-                            <h4 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Software House Mastery</h4>
-                            <p className="text-slate-500 text-sm leading-relaxed font-medium">
-                                Real-world internship validation for contributing to production-level global client software solutions.
-                            </p>
-                        </div>
-
-                        {/* Certificate 4 */}
+                        {/* Certificate 3: CERTIPORT */}
                         <div className="group">
                             <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
                                 <FiGlobe size={24} />
                             </div>
-                            <h4 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Global Specialization</h4>
+                            <h4 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">CERTIPORT Certification</h4>
                             <p className="text-slate-500 text-sm leading-relaxed font-medium">
                                 Internationally recognized Specialist credentials via our strategic Certiport (Pearson VUE) partnership.
+                            </p>
+                        </div>
+
+                        {/* Certificate 4: One More */}
+                        <div className="group">
+                            <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
+                                <FiStar size={24} />
+                            </div>
+                            <h4 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Advanced Skill Credential</h4>
+                            <p className="text-slate-500 text-sm leading-relaxed font-medium">
+                                Specialized certification focusing on niche technologies and modern cloud-native architectures.
                             </p>
                         </div>
 

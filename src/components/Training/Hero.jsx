@@ -44,7 +44,7 @@ const TrainingHero = () => {
                         Trusted by over <span className="text-primary">100+ businesses</span> worldwide
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-14 opacity-25 grayscale contrast-125">
-                        {['TECHCORP', 'GLOBALSOFT', 'ELEVATE', 'INNOVATE', 'SYNERGY', 'VORTEX'].map((logo, i) => (
+                        {['NAVTTC', 'KP-TEVTA', 'PSEB', 'PASHA', 'PITB', 'DIGISKILLS'].map((logo, i) => (
                             <span key={i} className="text-xl lg:text-3xl font-black tracking-tighter text-slate-900 hover:text-primary hover:opacity-100 transition-all cursor-default">{logo}</span>
                         ))}
                     </div>
