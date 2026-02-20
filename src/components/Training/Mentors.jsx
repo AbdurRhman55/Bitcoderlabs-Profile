@@ -1,124 +1,133 @@
-import React, { useState } from 'react';
-import { FiArrowLeft, FiArrowRight, FiCheckCircle } from 'react-icons/fi';
+import React from 'react';
+import { FiArrowUpRight, FiLinkedin, FiInstagram, FiTwitter } from 'react-icons/fi';
 
 const Mentors = () => {
     const mentors = [
         {
             id: 1,
-            name: "Alexander Reves",
-            role: "Executive coach and business advisor",
-            experience: "15+ Years Experience",
-            expertise: ["Strategic Leadership", "Business Growth", "Digital Transformation"],
-            quote: "I can help with all aspects of counselling, including work, business, and life.",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80",
-            color: "#2a4242" // Accurate Dark Seaweed/Petrol Green
+            name: "Mian Dawood Ali Shah",
+            role: "API Specialist",
+            label: "BACKEND ARCHITECT",
+            image: "/mian Dawood Ali Shah.webp",
+            bio: "Specializing in high-performance API architectures and scalable backend systems."
         },
         {
             id: 2,
-            name: "Sarah Chen",
-            role: "Senior Engineering Manager",
-            experience: "12+ Years Experience",
-            expertise: ["System Design", "Agile Methodology", "Team Leadership"],
-            quote: "Transforming complex technical challenges into scalable business solutions.",
-            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80",
-            color: "#1d3240" // Deep Slated Navy
+            name: "Mian Aizaz Ali Shah",
+            role: "Front End Developer",
+            label: "UI/UX ENGINEER",
+            image: "/mian aizaz ali shah.webp",
+            bio: "Crafting immersive user experiences with cutting-edge frontend technologies."
         },
         {
             id: 3,
-            name: "Marcus Thorne",
-            role: "Product Strategy Director",
-            experience: "10+ Years Experience",
-            expertise: ["Market Analysis", "User Experience", "Product Lifecycles"],
-            quote: "Bridging the gap between user needs and technical excellence.",
-            image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=1000&q=80",
-            color: "#382a45" // Deep Muted Plum
+            name: "Mahnoor Azeem",
+            role: "Digital Marketing",
+            label: "GROWTH STRATEGIST",
+            image: "/Mahnoor Azeem.jpg",
+            bio: "Driving brand growth through data-driven digital marketing strategies."
         }
     ];
 
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const nextMentor = () => {
-        setCurrentIndex((prev) => (prev + 1) % mentors.length);
-    };
-
-    const prevMentor = () => {
-        setCurrentIndex((prev) => (prev - 1 + mentors.length) % mentors.length);
-    };
-
-    const current = mentors[currentIndex];
-
     return (
-        <section
-            className="relative w-full overflow-hidden transition-colors duration-1000 ease-in-out min-h-screen flex items-center"
-            style={{ backgroundColor: current.color }}
-        >
-            {/* ── Visual Backdrop Overlay ── */}
-            <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+        <section className="bg-[#0a0a0b] py-16 lg:py-28 overflow-hidden font-sans">
+            <div className="max-w-[1500px] mx-auto px-6 lg:px-16 relative">
 
-
-
-            <div className="max-w-[1600px] mx-auto w-full px-6 lg:px-20 relative z-10 py-32 lg:py-0">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-
-                    {/* Left Side: Large Photo (Occupies more space like the image) */}
-                    <div className="lg:col-span-6 flex justify-center lg:justify-start">
-                        <div className="relative w-full max-w-[600px] aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-sm shadow-[0_50px_100px_rgba(0,0,0,0.3)] animate-in fade-in zoom-in-95 duration-1000">
-                            <img
-                                src={current.image}
-                                alt={current.name}
-                                className="w-full h-full object-cover object-center grayscale-[0.1] contrast-110"
-                            />
-                            {/* Subtle Lighting Effect */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent pointer-events-none" />
-                        </div>
-                    </div>
-
-                    {/* Right Side: Content (Offset to the right) */}
-                    <div className="lg:col-span-6 text-white text-left max-w-2xl">
-                        <div className="animate-in fade-in slide-in-from-right-10 duration-1000 delay-200">
-
-                            <h2 className="text-4xl lg:text-7xl font-bold leading-[1.1] mb-8 tracking-tight">
-                                {current.role}
+                {/* ── Signature Premium Header ── */}
+                <div className="relative mb-16 lg:mb-24">
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+                        <div className="max-w-2xl">
+                            <span className="text-[9px] font-black tracking-[0.5em] text-primary uppercase block mb-6">
+                                THE ELITE COHORT
+                            </span>
+                            <h2 className="text-4xl lg:text-[72px] font-black text-white leading-[0.9] tracking-tighter mb-8">
+                                Masters of <br />
+                                <span className="text-white/20">The Craft.</span>
                             </h2>
-
-                            <p className="text-lg lg:text-xl text-white/80 leading-relaxed mb-10 font-medium">
-                                {current.quote}
+                            <p className="text-lg lg:text-xl text-white/40 leading-relaxed font-light max-w-xl">
+                                Direct access to the minds shaping the future of global industry.
                             </p>
-
-                            <button className="px-8 lg:px-10 py-4 lg:py-5 bg-[#eef2f4ff] text-slate-900 font-bold text-sm lg:text-base rounded-md hover:bg-white transition-all transform hover:-translate-y-1 active:translate-y-0 shadow-lg mb-14">
-                                Let's Clarify Your Direction
-                            </button>
-
-                            {/* Slider Navigation & Mentor Info */}
-                            <div className="flex items-center justify-between border-t border-white/10 pt-10">
-                                <div>
-                                    <div className="text-[10px] tracking-[.4em] uppercase opacity-40 font-black mb-2">Lead Mentor</div>
-                                    <div className="text-2xl lg:text-3xl font-black italic tracking-tighter">{current.name}</div>
-                                </div>
-
-                                <div className="flex items-center gap-4">
-                                    <button
-                                        onClick={prevMentor}
-                                        className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all group"
-                                    >
-                                        <FiArrowLeft className="group-hover:scale-110 transition-transform" />
-                                    </button>
-                                    <button
-                                        onClick={nextMentor}
-                                        className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all group"
-                                    >
-                                        <FiArrowRight className="group-hover:scale-110 transition-transform" />
-                                    </button>
-                                </div>
+                        </div>
+                        {/* Status Indicator */}
+                        <div className="flex items-center gap-6 pb-4 border-b border-white/10">
+                            <div className="flex -space-x-3">
+                                {mentors.map(m => (
+                                    <div key={m.id} className="w-10 h-10 rounded-full border-2 border-[#0a0a0b] overflow-hidden grayscale">
+                                        <img src={m.image} className="w-full h-full object-cover" />
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="text-white">
+                                <span className="block text-[8px] font-black tracking-widest opacity-40">AVAILABILITY</span>
+                                <span className="text-xs font-bold tracking-tighter uppercase italic text-primary">Limited Enrollment</span>
                             </div>
                         </div>
                     </div>
+                    {/* Vertical Background Line */}
+                    <div className="absolute -left-10 top-0 w-px h-[200%] bg-gradient-to-b from-primary/50 to-transparent hidden lg:block" />
                 </div>
-            </div>
 
-            {/* Background Texture elements for "premium" feel */}
-            <div className="absolute bottom-0 right-0 w-1/3 h-1/2 bg-white/5 blur-[120px] rounded-full translate-x-1/2 translate-y-1/2" />
-            <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-black/10 blur-[150px] rounded-full -translate-x-1/4 -translate-y-1/4" />
+                {/* ── High-Luxury Content Grid ── */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-10 lg:px-20 px-6">
+                    {mentors.map((mentor) => (
+                        <div key={mentor.id} className="group relative ">
+
+                            {/* Vertical Floating Label */}
+                            <div className="absolute -left-6 top-0 h-full overflow-hidden pointer-events-none hidden lg:block">
+                                <span className="text-[80px] font-black text-white/[0.03] origin-top-left -rotate-90 block whitespace-nowrap tracking-tighter translate-y-full group-hover:translate-y-0 transition-transform duration-1000 ease-in-out">
+                                    {mentor.label}
+                                </span>
+                            </div>
+
+                            {/* Main Visual Frame */}
+                            <div className="relative aspect-[3.2/3.5] overflow-hidden transition-all duration-700 bg-[#161618]">
+                                <img
+                                    src={mentor.image}
+                                    alt={mentor.name}
+                                    className="w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-1000 ease-expo"
+                                />
+
+                                {/* Glassmorphism Interface Elements */}
+                                <div className="absolute inset-0 p-8 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                                    <div className="flex justify-end gap-3">
+                                        <div className="w-10 h-10 rounded-full backdrop-blur-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer">
+                                            <FiLinkedin size={18} />
+                                        </div>
+                                    </div>
+
+                                    <div className="backdrop-blur-xl bg-black/40 border border-white/10 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
+                                        <p className="text-sm text-white/70 italic leading-relaxed">
+                                            "{mentor.bio}"
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Floating Detail Link */}
+                                <div className="absolute -bottom-1 -right-1 w-20 h-20 bg-primary flex items-center justify-center text-white translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-700 ease-expo cursor-pointer">
+                                    <FiArrowUpRight size={32} />
+                                </div>
+                            </div>
+
+                            {/* Essential Typography */}
+                            <div className="mt-8">
+                                <h3 className="text-2xl font-black text-white tracking-tighter mb-1">
+                                    {mentor.name}
+                                </h3>
+                                <div className="flex items-center gap-3">
+                                    <span className="w-6 h-px bg-primary" />
+                                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/40">
+                                        {mentor.role}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* ── High-Luxury Background Accents ── */}
+                <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[180px] pointer-events-none" />
+                <div className="absolute bottom-[-5%] left-[-10%] w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-[150px] pointer-events-none" />
+            </div>
         </section>
     );
 };

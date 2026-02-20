@@ -1,5 +1,5 @@
-import React from 'react';
-import { FiArrowRight, FiPhone, FiStar, FiMousePointer } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiPhone, FiArrowRight } from 'react-icons/fi';
 
 const TrainingHero = () => {
     return (
@@ -28,14 +28,14 @@ const TrainingHero = () => {
 
                 {/* ── CTA Buttons ── */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-14 animate-ultra-reveal-buttons">
-                    <button className="group relative flex items-center justify-center gap-3 px-12 py-5 rounded-2xl bg-slate-900 text-white font-black text-lg shadow-2xl hover:bg-primary transition-all duration-300 hover:scale-[1.02] active:scale-95 overflow-hidden cursor-pointer">
+                    <Link to="/contact" className="group relative flex items-center justify-center gap-3 px-12 py-5 rounded-2xl bg-slate-900 text-white font-black text-lg shadow-2xl hover:bg-primary transition-all duration-300 hover:scale-[1.02] active:scale-95 overflow-hidden cursor-pointer">
                         <FiPhone size={20} />
                         Join a Bootcamp
-                    </button>
-                    <button className="flex items-center justify-center gap-3 px-12 py-5 rounded-2xl bg-white border-2 border-slate-100 text-slate-900 font-black text-lg hover:border-primary hover:text-primary transition-all duration-300 hover:scale-[1.02] active:scale-95 cursor-pointer">
+                    </Link>
+                    <a href="#curriculum" className="flex items-center justify-center gap-3 px-12 py-5 rounded-2xl bg-white border-2 border-slate-100 text-slate-900 font-black text-lg hover:border-primary hover:text-primary transition-all duration-300 hover:scale-[1.02] active:scale-95 cursor-pointer">
                         Explore Courses
                         <FiArrowRight size={20} />
-                    </button>
+                    </a>
                 </div>
 
                 {/* ── Trust Banner ── */}

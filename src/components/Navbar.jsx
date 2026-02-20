@@ -1,13 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
+const navLinks = [
+    { id: 'home', label: 'Home', path: '/' },
+    { id: 'about', label: 'About us', path: '/about' },
+    { id: 'services', label: 'Services', path: '/services' },
+    { id: 'products', label: 'Products', path: '/products' },
+    { id: 'training', label: 'Training', path: '/training' },
+    { id: 'contact', label: 'Contact Us', path: '/contact' }
+];
+
 const Navbar = () => {
-    const [activeLink, setActiveLink] = useState('home');
+    const location = useLocation();
+
+    // Initialize activeLink immediately to prevent blinking on refresh
+    const [activeLink, setActiveLink] = useState(() => {
+        const currentPath = window.location.pathname;
+        const matchingLink = navLinks.find(link => link.path === currentPath);
+        return matchingLink ? matchingLink.id : 'home';
+    });
+
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+
+    // Sync active link on path changes
+    useEffect(() => {
+        const matchingLink = navLinks.find(link => link.path === location.pathname);
+        if (matchingLink) {
+            setActiveLink(matchingLink.id);
+        }
+    }, [location.pathname]);
 
     useEffect(() => {
         const controlNavbar = () => {
@@ -38,15 +63,6 @@ const Navbar = () => {
             document.body.style.overflow = '';
         };
     }, [isMobileMenuOpen]);
-
-    const navLinks = [
-        { id: 'home', label: 'Home', path: '/' },
-        { id: 'about', label: 'About us', path: '/about' },
-        { id: 'services', label: 'Services', path: '/services' },
-        { id: 'products', label: 'Products', path: '/products' },
-        { id: 'training', label: 'Training', path: '/training' },
-        { id: 'contact', label: 'Contact Us', path: '/contact' }
-    ];
 
     const handleLinkClick = (id) => {
         setActiveLink(id);

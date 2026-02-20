@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const ServicesHero = () => {
     const [formData, setFormData] = useState({
@@ -41,7 +42,7 @@ const ServicesHero = () => {
             className="relative w-full min-h-screen overflow-hidden flex items-center"
             style={{ backgroundColor: '#1e293b' }}
         >
-            {/* Background Video Playback - Fixed z-index and styles to ensure visibility */}
+            {/* Background Video Playback */}
             <div className="absolute inset-0 z-0">
                 <video
                     autoPlay
@@ -58,7 +59,7 @@ const ServicesHero = () => {
                 </video>
             </div>
 
-            {/* Original Overlay and Content Design - Added z-10 for layered structure */}
+            {/* Overlay */}
             <div
                 className="absolute inset-0 z-10"
                 style={{
@@ -70,7 +71,6 @@ const ServicesHero = () => {
             <div className="relative z-30 flex flex-col lg:flex-row items-center justify-between px-6 lg:px-10 py-24 gap-10 max-w-7xl mx-auto w-full">
                 {/* Left Side */}
                 <div className="flex-1 max-w-xl text-center lg:text-left">
-                    {/* Heading */}
                     <h1 className="text-3xl lg:text-6xl font-black text-white leading-tight mb-2 lg:mb-6">
                         Top Quality{' '}
                         <span style={{ color: '#2a9fd8' }}>Digital</span>
@@ -79,14 +79,12 @@ const ServicesHero = () => {
                         <span className="text-white">For You</span>
                     </h1>
 
-                    {/* Description */}
                     <p className="text-gray-300 text-lg leading-relaxed mb-4 lg:mb-8 max-w-md mx-auto lg:mx-0">
                         Transform your business with our expert digital solutions. Our skilled team
                         ensures precision and quality, delivering scalable, modern applications that
                         require minimal effort and perform perfectly year-round.
                     </p>
 
-                    {/* Stats */}
                     <div className="flex items-center justify-center lg:justify-start gap-10 mb-8 lg:mb-10">
                         {stats.map((stat, index) => (
                             <div key={index}>
@@ -98,19 +96,20 @@ const ServicesHero = () => {
                         ))}
                     </div>
 
-                    {/* CTA Buttons */}
                     <div className="flex items-center justify-center lg:justify-start lg:gap-4 gap-2">
-                        <button
+                        <Link
+                            to="/about"
                             className="flex items-center gap-2 px-8 py-4 rounded-xl text-white font-semibold text-sm transition-all duration-300 hover:opacity-90 hover:scale-105 shadow-lg cursor-pointer"
                             style={{ backgroundColor: '#2a9fd8' }}
                         >
                             Read More <FiArrowRight size={16} />
-                        </button>
-                        <button
+                        </Link>
+                        <a
+                            href="#core-services"
                             className="flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all duration-300 cursor-pointer"
                         >
                             Our Services <FiArrowRight size={16} />
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -123,7 +122,6 @@ const ServicesHero = () => {
                     </h2>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        {/* Name */}
                         <div>
                             <input
                                 type="text"
@@ -135,7 +133,6 @@ const ServicesHero = () => {
                             />
                         </div>
 
-                        {/* Email */}
                         <div>
                             <input
                                 type="email"
@@ -147,7 +144,6 @@ const ServicesHero = () => {
                             />
                         </div>
 
-                        {/* Phone */}
                         <div>
                             <input
                                 type="tel"
@@ -159,7 +155,6 @@ const ServicesHero = () => {
                             />
                         </div>
 
-                        {/* Service Type */}
                         <div className="relative">
                             <select
                                 name="service"
@@ -181,7 +176,6 @@ const ServicesHero = () => {
                             </div>
                         </div>
 
-                        {/* Message */}
                         <div>
                             <textarea
                                 name="message"
@@ -193,7 +187,6 @@ const ServicesHero = () => {
                             ></textarea>
                         </div>
 
-                        {/* Submit Button */}
                         <button
                             type="submit"
                             className="w-full py-4 rounded-full text-white font-bold text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02] shadow-lg cursor-pointer"

@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi';
 
 const Hero = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -96,7 +98,7 @@ const Hero = () => {
                     </div>
 
                     {/* Right Column - Centered Professional Intro */}
-                    <div className={`w-full transition-all duration-1000 delay-300 transform ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}>
+                    <div className={`w-full lg:w-1/2 transition-all duration-1000 delay-300 transform ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}>
                         <div className="relative">
                             <p className="text-2xl md:text-3xl text-gray-800 leading-tight font-light tracking-tight lg:pl-4">
                                 Bitcoderlabs is a premier software engineering firm dedicated to architecting the
@@ -105,6 +107,12 @@ const Hero = () => {
                                 <span className="text-primary italic font-medium"> scalable global products </span>
                                 that drive measurable business transformation.
                             </p>
+                            <div className="mt-10 lg:pl-4">
+                                <Link to="/contact" className="group flex items-center gap-3 px-8 py-4 bg-gray-900 text-white rounded-xl font-bold transition-all hover:bg-primary hover:scale-[1.02] active:scale-95 shadow-xl shadow-gray-900/10 w-fit cursor-pointer">
+                                    Let's Work Together
+                                    <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

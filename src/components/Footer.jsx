@@ -92,7 +92,7 @@ const Footer = () => {
                                     <FiMapPin size={18} />
                                 </div>
                                 <span className="text-gray-400 font-medium">
-                                    Shaheed Benazir Bhutto Women University<br />Peshawar, Pakistan
+                                    Chamkani IT Park Peshawar, Pakistan
                                 </span>
                             </li>
                         </ul>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { FiArrowRight, FiCheck, FiStar, FiTrendingUp } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const ProductHeroBitcoderlabs = () => {
     const products = [
@@ -32,10 +33,8 @@ const ProductHeroBitcoderlabs = () => {
             <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2a9fd8]/5 -skew-x-12 translate-x-1/4 pointer-events-none" />
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-
                 {/* ── Hero Content*/}
                 <div className="pt-24 pb-12 lg:pt-36 lg:pb-20 text-center max-w-4xl mx-auto">
-
                     {/* Main Heading */}
                     <h1 className="text-5xl lg:text-7xl font-black leading-tight text-slate-900 mb-8 tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-1000">
                         Software Products <br />
@@ -52,21 +51,19 @@ const ProductHeroBitcoderlabs = () => {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
                         <button
                             onClick={() => document.getElementById('portfolio-section')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="group w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-5 rounded-2xl bg-primary text-white font-black shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-1 transition-all"
+                            className="group w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-5 rounded-2xl bg-primary text-white font-black shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-1 transition-all cursor-pointer"
                         >
                             Explore All Products
                             <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
                         </button>
-                        <button
-                            onClick={() => document.getElementById('industries-section')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="w-full sm:w-auto px-10 py-5 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 font-bold hover:bg-white transition-all shadow-sm"
+                        <Link
+                            to="/contact"
+                            className="w-full sm:w-auto px-10 py-5 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 font-bold hover:bg-white transition-all shadow-sm flex items-center justify-center cursor-pointer"
                         >
                             Schedule Demo
-                        </button>
+                        </Link>
                     </div>
                 </div>
-
-
             </div>
         </section>
     );

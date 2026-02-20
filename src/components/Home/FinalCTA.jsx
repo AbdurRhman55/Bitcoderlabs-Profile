@@ -1,5 +1,6 @@
 import React from 'react';
-import { FiArrowRight, FiZap } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi';
 
 const FinalCTA = () => {
     return (
@@ -25,13 +26,13 @@ const FinalCTA = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 items-center">
-                            <button className="px-8 py-3 bg-primary hover:bg-[#2389ba] text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 group flex items-center gap-2 cursor-pointer">
+                            <Link to="/contact" className="px-8 py-3 bg-primary hover:bg-[#2389ba] text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 group flex items-center gap-2 cursor-pointer">
                                 Start Your Project
                                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                            <button className="px-8 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl border border-white/10 backdrop-blur-md transition-all duration-300 cursor-pointer">
+                            </Link>
+                            <Link to="/contact" className="px-8 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl border border-white/10 backdrop-blur-md transition-all duration-300 cursor-pointer">
                                 Consultation
-                            </button>
+                            </Link>
                         </div>
 
                         <p className="mt-8 text-gray-500 font-bold text-[10px] uppercase tracking-[0.2em]">

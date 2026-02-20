@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FiMonitor, FiShoppingCart, FiSmartphone, FiSettings, FiDatabase, FiShield } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const services = [
     {
@@ -88,12 +89,10 @@ const CoreServicesSection = () => {
     }, []);
 
     return (
-        <section className="bg-[#fdfcf6] py-10 lg:py-[120px] lg:pb-[140px] relative overflow-hidden font-sans">
+        <section id="core-services" className="bg-[#fdfcf6] py-10 lg:py-[120px] lg:pb-[140px] relative overflow-hidden font-sans">
             <div className="max-w-[1280px] mx-auto lg:px-8 px-6 relative z-10">
                 {/* Header */}
                 <div className="flex flex-col items-center text-center mb-10 lg:mb-20">
-
-                    {/* Title */}
                     <h2 className="text-4xl md:text-5xl lg:text-[68px] font-extrabold leading-tight text-[#1e293b] mb-5 tracking-tight">
                         Core <span className="text-[#2a9fd8]">Services</span>
                     </h2>
@@ -110,31 +109,23 @@ const CoreServicesSection = () => {
                         const isVis = visible.includes(index);
 
                         return (
-                            <div
+                            <Link
+                                to="/contact"
                                 key={service.id}
                                 ref={(el) => (cardRefs.current[index] = el)}
                                 onMouseEnter={() => setHovered(index)}
                                 onMouseLeave={() => setHovered(null)}
                                 className={`
-                                    relative rounded-3xl p-9 cursor-pointer overflow-hidden
+                                    relative rounded-3xl p-9 cursor-pointer overflow-hidden block
                                     bg-white border-2 transition-all duration-[400ms] ease-out
                                     ${isHovered ? 'border-[#2a9fd8] -translate-y-1.5 scale-[1.01] shadow-[0_20px_40px_rgba(0,0,0,0.08)]' : 'border-[#e2e8f0] shadow-[0_4px_12px_rgba(0,0,0,0.04)]'}
                                     ${isVis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
                                 `}
                             >
-                                {/* Top Row */}
                                 <div className="flex items-start justify-between mb-6">
-                                    {/* Icon Container */}
-                                    <div
-                                        className={`
-                                            w-[60px] h-[60px] rounded-2xl bg-[#2a9fd8]/10 border-2 border-[#2a9fd8]/30
-                                            flex items-center justify-center 
-                                        `}
-                                    >
+                                    <div className="w-[60px] h-[60px] rounded-2xl bg-[#2a9fd8]/10 border-2 border-[#2a9fd8]/30 flex items-center justify-center">
                                         <service.icon className="text-[#2a9fd8]" size={28} />
                                     </div>
-
-                                    {/* Number + Tag */}
                                     <div className="text-right">
                                         <div className="text-xs font-extrabold text-[#cbd5e1] tracking-wider font-mono mb-1.5">
                                             {service.id}
@@ -145,25 +136,20 @@ const CoreServicesSection = () => {
                                     </div>
                                 </div>
 
-                                {/* Title */}
                                 <h3 className="text-[22px] font-bold text-[#1e293b] mb-2 tracking-tight leading-tight">
                                     {service.title}
                                 </h3>
 
-                                {/* Short subtitle */}
                                 <p className="text-xs font-semibold text-[#2a9fd8] mb-4 tracking-wide opacity-90">
                                     {service.short}
                                 </p>
 
-                                {/* Divider */}
                                 <div className="w-full h-px bg-[#e2e8f0] mb-4" />
 
-                                {/* Description */}
                                 <p className="text-[15px] text-[#64748b] leading-relaxed mb-7">
                                     {service.description}
                                 </p>
 
-                                {/* Arrow CTA */}
                                 <div className={`flex items-center text-[#2a9fd8] text-[13px] font-bold tracking-wide transition-all duration-300 ${isHovered ? 'gap-3' : 'gap-2'}`}>
                                     <span>Learn More</span>
                                     <svg
@@ -182,13 +168,13 @@ const CoreServicesSection = () => {
                                         />
                                     </svg>
                                 </div>
-                            </div>
+                            </Link>
                         );
                     })}
                 </div>
 
                 {/* Bottom CTA strip */}
-                <div className="lg:mt-20 mt-10 lg:p-12 p-6 lg:px-14 px-6 rounded-[28px] bg-gradient-to-br from-[#2a9fd8] to-[#1e7ba8]  border-2 border-[#e2e8f0] flex items-center justify-between flex-wrap gap-6 relative overflow-hidden">
+                <div className="lg:mt-20 mt-10 lg:p-12 p-6 lg:px-14 px-6 rounded-[28px] bg-gradient-to-br from-[#2a9fd8] to-[#1e7ba8] border-2 border-[#e2e8f0] flex items-center justify-between flex-wrap gap-6 relative overflow-hidden">
                     <div className="relative">
                         <h3 className="lg:text-[28px] text-[20px] lg:font-extrabold font-semibold text-white mb-2 lg:tracking-tight tracking-normal">
                             Not sure which service you need?
@@ -198,11 +184,12 @@ const CoreServicesSection = () => {
                         </p>
                     </div>
 
-                    <button
-                        className="px-9 py-4 rounded-full bg-white border-none text-[#2a9fd8] font-extrabold text-[15px] tracking-wide cursor-pointer transition-all duration-300 shadow-[0_8px_24px_rgba(42,159,216,0.25)] whitespace-nowrap hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-[0_16px_32px_rgba(42,159,216,0.35)]"
+                    <Link
+                        to="/contact"
+                        className="px-9 py-4 rounded-full bg-white border-none text-[#2a9fd8] font-extrabold text-[15px] tracking-wide cursor-pointer transition-all duration-300 shadow-[0_8px_24px_rgba(42,159,216,0.25)] whitespace-nowrap hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-[0_16px_32px_rgba(42,159,216,0.35)] flex items-center justify-center"
                     >
                         Book Free Consultation →
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

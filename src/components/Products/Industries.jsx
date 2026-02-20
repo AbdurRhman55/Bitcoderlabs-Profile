@@ -40,6 +40,8 @@ const industries = [
     }
 ];
 
+import { Link } from 'react-router-dom';
+
 const Industries = () => {
     return (
         <section id="industries-section" className="relative bg-[#FFF8F6] py-24 lg:py-22 overflow-hidden">
@@ -111,10 +113,10 @@ const Industries = () => {
                                 Interested? Please share your idea.
                             </p>
 
-                            <button className="group flex items-center gap-4 px-6 py-2 rounded-2xl bg-gradient-to-br from-[#2a9fd8] to-[#1a7fb8] text-white font-black text-lg shadow-[0_15px_40px_rgba(42,159,216,0.3)] hover:shadow-[0_20px_50px_rgba(42,159,216,0.4)] transition-all hover:scale-105 active:scale-95">
+                            <Link to="/contact" className="group flex items-center justify-center gap-4 px-6 py-2 rounded-2xl bg-gradient-to-br from-[#2a9fd8] to-[#1a7fb8] text-white font-black text-lg shadow-[0_15px_40px_rgba(42,159,216,0.3)] hover:shadow-[0_20px_50px_rgba(42,159,216,0.4)] transition-all hover:scale-105 active:scale-95 cursor-pointer max-w-xs">
                                 Let's Talk
                                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            </Link>
                         </div>
                     </div>
 
