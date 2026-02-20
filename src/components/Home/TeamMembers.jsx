@@ -117,7 +117,7 @@ const TeamMembers = () => {
                                     className="absolute transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] [transform-style:preserve-3d]"
                                     style={getCardStyle(index)}
                                 >
-                                    <div className="relative w-[180px] h-[280px] md:w-[280px] md:h-[440px] rounded-[30px] p-[2px] bg-gradient-to-br from-[#2a9fd8]/40 to-transparent shadow-2xl overflow-hidden backdrop-blur-sm">
+                                    <div className="relative w-[240px] h-[370px] md:w-[280px] md:h-[440px] rounded-[30px] p-[2px] bg-gradient-to-br from-[#2a9fd8]/40 to-transparent shadow-2xl overflow-hidden backdrop-blur-sm">
                                         <div className="w-full h-full rounded-[28px] overflow-hidden bg-white relative group">
                                             <img
                                                 src={dev.image}
