@@ -84,7 +84,7 @@ const Footer = () => {
                                     <FiPhone size={18} />
                                 </div>
                                 <span className="text-gray-400 font-medium">
-                                    +92 (300) 123 4567
+                                    +92 (333) 9277021
                                 </span>
                             </li>
                             <li className="flex gap-4">
