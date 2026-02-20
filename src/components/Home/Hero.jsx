@@ -10,8 +10,7 @@ const HeroSection = () => {
                     className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-full min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 border-none"
                     allow="autoplay; fullscreen"
                 ></iframe>
-                {/* Clean white-glass overlay for professional look */}
-                {/* <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px]"></div> */}
+
             </div>
 
             {/* Main Content */}

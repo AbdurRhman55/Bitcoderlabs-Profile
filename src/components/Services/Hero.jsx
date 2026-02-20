@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiCheckCircle, FiLoader } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 const ServicesHero = () => {
+    const [status, setStatus] = useState("idle"); // idle, loading, success, error
+    const [result, setResult] = useState("");
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -15,9 +17,49 @@ const ServicesHero = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
+
+        setStatus("loading");
+        setResult("Submitting your quote request...");
+
+        const submissionData = new FormData();
+        submissionData.append("access_key", "6febf11c-5a25-41f6-9f4f-0433fe6fab95");
+        submissionData.append("name", formData.name);
+        submissionData.append("email", formData.email);
+        submissionData.append("phone", formData.phone);
+        submissionData.append("service_type", formData.service);
+        submissionData.append("message", formData.message);
+        submissionData.append("from_name", "BitCoderLabs Quote Request");
+        submissionData.append("subject", `New Quote Request for ${formData.service} from ${formData.name}`);
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: submissionData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setStatus("success");
+                setResult("Quote request sent! Our team will contact you soon.");
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    service: '',
+                    message: ''
+                });
+            } else {
+                setStatus("error");
+                setResult(data.message || "Failed to send request. Please try again.");
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            setStatus("error");
+            setResult("Connection error. Please check your internet.");
+        }
     };
 
     const services = [
@@ -129,6 +171,7 @@ const ServicesHero = () => {
                                 value={formData.name}
                                 onChange={handleChange}
                                 placeholder="Your Full Name"
+                                required
                                 className="w-full px-5 py-3.5 rounded-2xl border border-gray-200 text-gray-800 text-sm placeholder-gray-400 focus:outline-none focus:border-[#2a9fd8] focus:ring-2 focus:ring-[#2a9fd8]/20 transition-all duration-300"
                             />
                         </div>
@@ -140,6 +183,7 @@ const ServicesHero = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 placeholder="Email"
+                                required
                                 className="w-full px-5 py-3.5 rounded-2xl border border-gray-200 text-gray-800 text-sm placeholder-gray-400 focus:outline-none focus:border-[#2a9fd8] focus:ring-2 focus:ring-[#2a9fd8]/20 transition-all duration-300"
                             />
                         </div>
@@ -151,6 +195,7 @@ const ServicesHero = () => {
                                 value={formData.phone}
                                 onChange={handleChange}
                                 placeholder="Phone No."
+                                required
                                 className="w-full px-5 py-3.5 rounded-2xl border border-gray-200 text-gray-800 text-sm placeholder-gray-400 focus:outline-none focus:border-[#2a9fd8] focus:ring-2 focus:ring-[#2a9fd8]/20 transition-all duration-300"
                             />
                         </div>
@@ -160,6 +205,7 @@ const ServicesHero = () => {
                                 name="service"
                                 value={formData.service}
                                 onChange={handleChange}
+                                required
                                 className="w-full px-5 py-3.5 rounded-2xl border border-gray-200 text-gray-500 text-sm focus:outline-none focus:border-[#2a9fd8] focus:ring-2 focus:ring-[#2a9fd8]/20 transition-all duration-300 appearance-none bg-white cursor-pointer"
                             >
                                 <option value="" disabled>Service type</option>
@@ -182,17 +228,38 @@ const ServicesHero = () => {
                                 value={formData.message}
                                 onChange={handleChange}
                                 placeholder="Write Message"
+                                required
                                 rows={3}
                                 className="w-full px-5 py-3.5 rounded-2xl border border-gray-200 text-gray-800 text-sm placeholder-gray-400 focus:outline-none focus:border-[#2a9fd8] focus:ring-2 focus:ring-[#2a9fd8]/20 transition-all duration-300 resize-none"
                             ></textarea>
                         </div>
 
+                        {status === "success" && (
+                            <div className="flex items-center gap-2 p-3 bg-green-50 text-green-700 rounded-xl text-xs font-bold animate-in fade-in slide-in-from-top-2">
+                                <FiCheckCircle className="shrink-0" />
+                                <span>{result}</span>
+                            </div>
+                        )}
+
+                        {status === "error" && (
+                            <div className="flex items-center gap-2 p-3 bg-red-50 text-red-700 rounded-xl text-xs font-bold animate-in fade-in slide-in-from-top-2">
+                                <span className="shrink-0 text-red-500 font-bold">⚠️</span>
+                                <span>{result}</span>
+                            </div>
+                        )}
+
                         <button
                             type="submit"
-                            className="w-full py-4 rounded-full text-white font-bold text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02] shadow-lg cursor-pointer"
+                            disabled={status === "loading"}
+                            className={`w-full py-4 rounded-full text-white font-bold text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2 ${status === "loading" ? 'opacity-80' : ''}`}
                             style={{ backgroundColor: '#2a9fd8' }}
                         >
-                            Get a quote
+                            {status === "loading" ? (
+                                <>
+                                    <FiLoader className="animate-spin" />
+                                    Submitting...
+                                </>
+                            ) : "Get a quote"}
                         </button>
                     </form>
                 </div>
