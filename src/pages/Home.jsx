@@ -4,6 +4,8 @@ import CEOMessage from '../components/Home/CEOMessage'
 import ExpertiseSection from '../components/Home/Expertisesection'
 import WhyChooseUs from '../components/Home/WhyChoseUs'
 import Stats from '../components/Home/Stats'
+import TeamMembers from '../components/Home/TeamMembers'
+import Advisor from '../components/Home/Advisor'
 import Testimonials from '../components/Home/Testimonials'
 
 function Home() {
@@ -15,6 +17,8 @@ function Home() {
                 <ExpertiseSection />
                 <CEOMessage />
                 <WhyChooseUs />
+                <TeamMembers />
+                <Advisor />
                 <Testimonials />
             </div>
         </div>

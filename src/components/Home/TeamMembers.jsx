@@ -86,7 +86,7 @@ const TeamMembers = () => {
     };
 
     return (
-        <section className="w-full bg-[#fdfcf6] py-32 md:py-24 overflow-hidden font-sans">
+        <section className="w-full bg-[#fdfcf6]  py-6 md:py-12 overflow-hidden font-sans">
             <div className="max-w-7xl mx-auto lg:px-12 px-3">
                 {/* Header Section */}
                 <div className="space-y-6 text-center">

@@ -13,15 +13,28 @@ const ContactSection = () => {
         phone: "",
         location: "Peshawar (Headquarters)",
         message: "",
+        cv: null,
         privacy: false
     });
 
+    const [uploadProgress, setUploadProgress] = useState(0);
+
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: type === 'checkbox' ? checked : value
-        }));
+        const { name, value, type, checked, files } = e.target;
+        if (type === 'file') {
+            const file = files[0];
+            if (file && file.size > 5 * 1024 * 1024) {
+                setResult("File too large (Max 5MB)");
+                setStatus("error");
+                return;
+            }
+            setFormData(prev => ({ ...prev, cv: file }));
+        } else {
+            setFormData(prev => ({
+                ...prev,
+                [name]: type === 'checkbox' ? checked : value
+            }));
+        }
     };
 
     const onSubmit = async (event) => {
@@ -34,47 +47,51 @@ const ContactSection = () => {
         }
 
         setStatus("loading");
-        setResult("Sending message...");
+        setUploadProgress(10);
+        setResult("Establishing secure connection...");
 
         const submissionData = new FormData();
-        submissionData.append("access_key", "6febf11c-5a25-41f6-9f4f-0433fe6fab95");
-        submissionData.append("name", `${formData.firstName} ${formData.lastName}`);
+        submissionData.append("firstName", formData.firstName);
+        submissionData.append("lastName", formData.lastName);
         submissionData.append("email", formData.email);
         submissionData.append("phone", formData.phone);
         submissionData.append("location", formData.location);
         submissionData.append("message", formData.message);
-        submissionData.append("from_name", "BitCoderLabs Website");
-        submissionData.append("subject", `New Inquiry from ${formData.firstName}`);
+
+        if (formData.cv) {
+            submissionData.append("cv", formData.cv);
+        }
 
         try {
-            const response = await fetch("https://api.web3forms.com/submit", {
+            // Target our custom Professional SMTP Server
+            const SERVER_URL = "http://localhost:5000/api/contact";
+            setUploadProgress(40);
+            setResult("Delivering Application & CV via SMTP...");
+
+            const response = await fetch(SERVER_URL, {
                 method: "POST",
                 body: submissionData
             });
 
             const data = await response.json();
+            setUploadProgress(100);
 
             if (data.success) {
                 setStatus("success");
-                setResult("Message sent! We'll get back to you within 24 hours.");
+                setResult("CV & Inquiry delivered! Our team will review your application within 24h.");
                 setFormData({
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    phone: "",
-                    location: "Peshawar (Headquarters)",
-                    message: "",
-                    privacy: false
+                    firstName: "", lastName: "", email: "", phone: "",
+                    location: "Peshawar (Headquarters)", message: "", cv: null, privacy: false
                 });
+                setTimeout(() => setUploadProgress(0), 3000);
             } else {
-                console.log("Error", data);
-                setResult(data.message || "Message delivery failed.");
+                setResult(data.message || "Professional SMTP Delivery failed.");
                 setStatus("error");
             }
         } catch (error) {
-            console.error("Submission Error:", error);
+            console.error("SMTP Client Error:", error);
             setStatus("error");
-            setResult("Server busy. Please try again in a few moments.");
+            setResult("SMTP Server not reachable. Ensure server.js is running.");
         }
     };
 
@@ -95,7 +112,7 @@ const ContactSection = () => {
                     {[1.2, 2.2, 3.2, 4.2].map((scale) => (
                         <div key={scale} className="absolute rounded-full border border-dashed border-slate-300" style={{ width: `${scale * 160}px`, height: `${scale * 160}px`, top: '50%', left: '0%', transform: 'translate(-30%, -50%)', opacity: 1 - (scale / 6) }} />
                     ))}
-                    <Avatar img="/mian Dawood Ali Shah.webp" size="w-10 h-10" top="15%" left="45%" />
+                    <Avatar img="/mian Dawood Ali Shah.webp" size="w-14 h-14" top="15%" left="45%" />
                     <Avatar img="/Abdur Rahman.jpeg" size="w-12 h-12" top="35%" left="15%" />
                     <Avatar img="/Irfan.jpeg" size="w-10 h-10" top="50%" left="25%" />
                     <Avatar img="/Mahnoor Azeem.jpg" size="w-8 h-8" top="48%" left="65%" />
@@ -140,9 +157,40 @@ const ContactSection = () => {
                             <FormSelect label="Location" name="location" value={formData.location} onChange={handleChange} options={['Peshawar (Headquarters)', 'Nowshera Region', 'Charsadda Region', 'Mardan City', 'Kohat Region', 'Swabi Region']} icon="🇵🇰" />
                         </div>
 
+                        {/* ── Perfected CV Dropzone ── */}
+                        <div className="space-y-2">
+                            <label className="text-xs font-semibold text-[#344054]">Attach CV / Resume</label>
+                            <div className={`relative border-2 border-dashed rounded-xl p-4 transition-all ${formData.cv ? 'border-green-200 bg-green-50/30' : 'border-slate-200 hover:border-[#2a9fd8] bg-slate-50/50'}`}>
+                                <input type="file" name="cv" onChange={handleChange} accept=".pdf,.doc,.docx" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                                <div className="flex items-center gap-4">
+                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center ${formData.cv ? 'bg-green-100 text-green-600' : 'bg-blue-100 text-[#2a9fd8]'}`}>
+                                        {formData.cv ? <FiCheckCircle size={20} /> : <span className="text-xl font-bold">📄</span>}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-xs font-bold text-[#101828] truncate">
+                                            {formData.cv ? formData.cv.name : "Click or drag to upload CV"}
+                                        </p>
+                                        <p className="text-[10px] text-[#667085]">
+                                            {formData.cv ? `${(formData.cv.size / 1024 / 1024).toFixed(2)} MB • Ready` : "PDF, DOCX up to 5MB"}
+                                        </p>
+                                    </div>
+                                    {formData.cv && (
+                                        <button type="button" onClick={() => setFormData(p => ({ ...p, cv: null }))} className="relative z-20 text-[10px] bg-white border border-slate-200 px-2 py-1 rounded-md hover:bg-red-50 hover:text-red-600 font-bold transition-all">Remove</button>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* ── Upload Progress Bar (Visible during loading) ── */}
+                        {status === "loading" && uploadProgress > 0 && (
+                            <div className="w-full bg-slate-100 h-1 rounded-full overflow-hidden">
+                                <div className="bg-[#2a9fd8] h-full transition-all duration-300" style={{ width: `${uploadProgress}%` }}></div>
+                            </div>
+                        )}
+
                         <div className="space-y-1">
-                            <label className="text-xs font-semibold text-[#344054]">Message</label>
-                            <textarea name="message" value={formData.message} onChange={handleChange} rows="3" placeholder="How can we help your business thrive?" required className="w-full px-4 py-2.5 rounded-xl border border-[#D0D5DD] focus:border-[#2a9fd8] focus:ring-4 focus:ring-blue-50 outline-none transition-all resize-none placeholder:text-[#667085] text-[#101828] font-medium text-sm" />
+                            <label className="text-xs font-semibold text-[#344054]">How can we lead you to success?</label>
+                            <textarea name="message" value={formData.message} onChange={handleChange} rows="3" placeholder="Tell us about your project or career goals..." required className="w-full px-4 py-2.5 rounded-xl border border-[#D0D5DD] focus:border-[#2a9fd8] focus:ring-4 focus:ring-blue-50 outline-none transition-all resize-none placeholder:text-[#667085] text-[#101828] font-medium text-sm" />
                         </div>
 
                         <div className="flex items-start gap-3 pt-1">
@@ -153,21 +201,21 @@ const ContactSection = () => {
                         </div>
 
                         {status === "success" && (
-                            <div className="flex items-center gap-2 p-3 bg-green-50 text-green-700 rounded-xl text-xs font-bold animate-in fade-in slide-in-from-top-2">
+                            <div className="flex items-center gap-2 p-3 bg-green-50 text-green-700 rounded-xl text-xs font-bold animate-in fade-in slide-in-from-top-2 border border-green-100">
                                 <FiCheckCircle className="shrink-0" />
                                 <span>{result}</span>
                             </div>
                         )}
 
                         {status === "error" && (
-                            <div className="flex items-center gap-2 p-3 bg-red-50 text-red-700 rounded-xl text-xs font-bold animate-in fade-in slide-in-from-top-2">
+                            <div className="flex items-center gap-2 p-3 bg-red-50 text-red-700 rounded-xl text-xs font-bold animate-in fade-in slide-in-from-top-2 border border-red-100">
                                 <span className="shrink-0 text-red-500 font-bold">⚠️</span>
                                 <span>{result}</span>
                             </div>
                         )}
 
-                        <button type="submit" disabled={status === "loading"} className={`w-full py-3 bg-[#2a9fd8] text-white font-bold rounded-xl hover:bg-[#2389ba] shadow-lg shadow-blue-100 transition-all active:scale-[0.98] text-sm mt-2 flex items-center justify-center gap-2 ${status === "loading" ? 'opacity-80' : ''}`}>
-                            {status === "loading" ? <><FiLoader className="animate-spin" />Connecting...</> : "Send message"}
+                        <button type="submit" disabled={status === "loading"} className={`w-full py-4 bg-[#2a9fd8] text-white font-bold rounded-xl hover:bg-[#2389ba] shadow-lg shadow-blue-100 transition-all active:scale-[0.98] text-sm mt-2 flex items-center justify-center gap-2 ${status === "loading" ? 'opacity-80' : ''}`}>
+                            {status === "loading" ? <><FiLoader className="animate-spin" /> {result}</> : "Sumbit Application"}
                         </button>
                     </form>
                 </div>

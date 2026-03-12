@@ -39,24 +39,24 @@ const ExpertiseSectionUnique = () => {
             description: 'Tailored software solutions designed to solve your unique business challenges and streamline operations.',
             image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop'
         },
-        {
-            icon: <FiCloud size={28} />,
-            title: 'Cloud Solutions',
-            description: 'Scalable cloud infrastructure and migration services to enhance performance and reduce operational costs.',
-            image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop'
-        },
+        // {
+        //     icon: <FiCloud size={28} />,
+        //     title: 'Cloud Solutions',
+        //     description: 'Scalable cloud infrastructure and migration services to enhance performance and reduce operational costs.',
+        //     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop'
+        // },
         {
             icon: <FiShoppingCart size={28} />,
             title: 'E-Commerce',
             description: 'Complete e-commerce platforms with secure payment integration and inventory management systems.',
             image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop'
         },
-        {
-            icon: <FiDatabase size={28} />,
-            title: 'Data Analytics',
-            description: 'Transform raw data into actionable insights with powerful analytics and visualization tools.',
-            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop'
-        },
+        // {
+        //     icon: <FiDatabase size={28} />,
+        //     title: 'Data Analytics',
+        //     description: 'Transform raw data into actionable insights with powerful analytics and visualization tools.',
+        //     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop'
+        // },
         {
             icon: <FiTool size={28} />,
             title: 'Maintenance & Support',
@@ -83,7 +83,7 @@ const ExpertiseSectionUnique = () => {
                 </div>
 
                 {/* Main Content */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     {/* Left Side - Service List */}
                     <div className="lg:col-span-5 space-y-2">
                         {services.map((service, index) => (
@@ -146,9 +146,9 @@ const ExpertiseSectionUnique = () => {
                     </div>
 
                     {/* Right Side - Active Service Display */}
-                    <div className="lg:col-span-7">
+                    <div className="lg:col-span-7 flex flex-col justify-center">
                         <div className="sticky top-24">
-                            <div className="relative h-[500px] rounded-2xl overflow-hidden bg-gray-100">
+                            <div className="relative h-[520px] rounded-2xl overflow-hidden bg-gray-100 shadow-xl">
                                 {services.map((service, index) => (
                                     <div
                                         key={index}
