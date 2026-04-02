@@ -184,12 +184,14 @@ const CoreServicesSection = () => {
                         </p>
                     </div>
 
-                    <Link
-                        to="/contact"
+                    <a
+                        href="https://calendly.com/aizazalishah31/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="px-9 py-4 rounded-full bg-white border-none text-[#2a9fd8] font-extrabold text-[15px] tracking-wide cursor-pointer transition-all duration-300 shadow-[0_8px_24px_rgba(42,159,216,0.25)] whitespace-nowrap hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-[0_16px_32px_rgba(42,159,216,0.35)] flex items-center justify-center"
                     >
                         Book Free Consultation →
-                    </Link>
+                    </a>
                 </div>
             </div>
         </section>

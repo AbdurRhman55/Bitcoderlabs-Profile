@@ -30,9 +30,9 @@ const FinalCTA = () => {
                                 Start Your Project
                                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
                             </Link>
-                            <Link to="/contact" className="px-8 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl border border-white/10 backdrop-blur-md transition-all duration-300 cursor-pointer">
+                            <a href="https://calendly.com/aizazalishah31/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl border border-white/10 backdrop-blur-md transition-all duration-300 cursor-pointer">
                                 Consultation
-                            </Link>
+                            </a>
                         </div>
 
                         <p className="mt-8 text-gray-500 font-bold text-[10px] uppercase tracking-[0.2em]">

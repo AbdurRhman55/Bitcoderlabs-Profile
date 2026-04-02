@@ -21,7 +21,7 @@ const CEOMessage = () => {
         {
             id: 2,
             type: 'CTO',
-            title: 'ngineering Tomorrow\'s Solutions Today',
+            title: 'Engineering Tomorrow\'s Solutions Today',
             image: '/mian aizaz ali shah.webp',
             name: 'Aizaz Ali Shah',
             position: 'Chief Technology Officer',

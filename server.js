@@ -22,8 +22,6 @@ const upload = multer({
     limits: { fileSize: 5 * 1024 * 1024 } // 5MB limit
 });
 
-// SMTP Transporter Configuration
-// Note: For Gmail, you must use an "App Password"
 const transporter = nodemailer.createTransport({
     service: 'gmail', // or your SMTP host
     auth: {

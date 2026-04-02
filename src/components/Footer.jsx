@@ -13,8 +13,13 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
                     {/* Brand Column */}
                     <div className="lg:col-span-5">
-                        <Link to="/" className="inline-block">
-                            <span className="text-3xl font-black text-white tracking-tighter">
+                        <Link to="/" className="flex items-center gap-3 group">
+                            <img 
+                                src="/favicon.svg" 
+                                alt="Bitcoderlabs Logo" 
+                                className="h-12 w-auto brightness-110 group-hover:scale-110 transition-transform duration-300"
+                            />
+                            <span className="text-2xl font-black text-white tracking-tighter">
                                 BITCODER<span className="text-primary">LABS</span>
                             </span>
                         </Link>

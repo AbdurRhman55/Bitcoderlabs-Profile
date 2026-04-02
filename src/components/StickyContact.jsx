@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiMail, FiPhone, FiMessageCircle, FiArrowRight } from 'react-icons/fi';
+import { FiMail, FiMessageCircle, FiArrowRight } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const StickyContact = () => {
     return (
@@ -9,20 +10,26 @@ const StickyContact = () => {
             <div className="group relative flex items-center">
                 {/* Expandable Panel */}
                 <div className="flex flex-col gap-2 mb-2 mr-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 translate-x-10 group-hover:translate-x-0">
-                    <Link
-                        to="/contact"
+                    <a
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=bitocderlabs@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
                         className="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-2xl border border-gray-100 text-[#2a9fd8] hover:bg-primary hover:text-white transition-all duration-300 flex items-center gap-2 group/link"
                     >
                         <FiMail size={18} />
                         <span className="max-w-0 overflow-hidden group-hover/link:max-w-xs transition-all duration-500 text-xs font-bold whitespace-nowrap">Email Us</span>
-                    </Link>
-                    <Link
-                        to="/contact"
-                        className="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-2xl border border-gray-100 text-[#2a9fd8] hover:bg-primary hover:text-white transition-all duration-300 flex items-center gap-2 group/link"
+                    </a>
+                    <a
+                        href="https://wa.me/923109614874"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-2xl border border-gray-100 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all duration-300 flex items-center gap-2 group/link"
                     >
-                        <FiPhone size={18} />
-                        <span className="max-w-0 overflow-hidden group-hover/link:max-w-xs transition-all duration-500 text-xs font-bold whitespace-nowrap">Call Us</span>
-                    </Link>
+                        <FaWhatsapp size={18} />
+                        <span className="max-w-0 overflow-hidden group-hover/link:max-w-xs transition-all duration-500 text-xs font-bold whitespace-nowrap">WhatsApp</span>
+                    </a>
                 </div>
 
                 {/* Main Vertical Tab */}
