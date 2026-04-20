@@ -1,0 +1,44 @@
+{
+  "categories": [
+    "All",
+    "Web Development",
+    "UI/UX Design",
+    "SEO Optimization",
+    "Performance",
+    "Freelancing"
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "How Modern UI is Transforming Web Experiences",
+      "desc": "Explore how clean design improves engagement.",
+      "image": "/blog-1.jpg",
+      "tag": "UI/UX Design",
+      "date": "2 days ago"
+    },
+    {
+      "id": 2,
+      "title": "Top Web Development Trends in 2025",
+      "desc": "Discover what's shaping the future of web.",
+      "image": "/blog-2.jpg",
+      "tag": "Web Development",
+      "date": "5 days ago"
+    },
+    {
+      "id": 3,
+      "title": "SEO Strategies That Actually Work",
+      "desc": "Boost your rankings with proven methods.",
+      "image": "/blog-3.jpg",
+      "tag": "SEO Optimization",
+      "date": "1 week ago"
+    },
+    {
+      "id": 4,
+      "title": "Website Performance Optimization Guide",
+      "desc": "Make your site faster and smoother.",
+      "image": "/blog-4.jpg",
+      "tag": "Performance",
+      "date": "3 days ago"
+    }
+  ]
+}
