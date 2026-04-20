@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import LeadershipSlider from './LeadershipSlider';
-import TeamMembers from './TeamMembers';
 
 const CEOMessage = () => {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -56,25 +55,9 @@ const CEOMessage = () => {
                         onSlideChange={onSlideChange}
                     />
                 </div>
-
-                {/* 3D Carousel at Bottom */}
-                <div className="mt-20">
-                    {/* <div className="text-center mb-16">
-                        <header className="text-center">
-                            <h2 className="text-[#2a9fd8] font-bold uppercase tracking-[0.2em] text-sm mb-4">
-                                Digital Showcase
-                            </h2>
-                            <h1 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
-                                Our <span className="text-[#2a9fd8]">Creative Portfolio</span>
-                            </h1>
-                            <p className="text-gray-500 mt-4 max-w-xl mx-auto font-medium">A curated selection of our most innovative projects and digital solutions.</p>
-                        </header>
-                    </div> */}
-                    <TeamMembers />
-                </div>
             </div>
         </section>
     );
 };
 
-export default CEOMessage;
+export default CEOMessage;

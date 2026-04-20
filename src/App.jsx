@@ -7,6 +7,11 @@ import Services from './pages/Services';
 import Products from './pages/Products';
 import Training from './pages/Training';
 import Contact from './pages/Contact';
+import Careers from './pages/Careers';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import CookiePolicy from './pages/CookiePolicy';
+import Security from './pages/Security';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -20,6 +25,11 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/training" element={<Training />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/cookie-policy" element={<CookiePolicy />} />
+        <Route path="/security" element={<Security />} />
       </Routes>
     </MainLayout>
   );

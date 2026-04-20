@@ -10,9 +10,6 @@ const Slide = ({ message, isActive }) => {
                 {/* Left Side: Image */}
                 <div className={`relative flex justify-center lg:justify-start transition-all duration-1000 transform ${isActive ? 'translate-x-0 opacity-100 scale-100' : 'lg:translate-x-full translate-y-10 opacity-0 scale-95'}`}>
                     <div className="relative group mx-auto lg:mx-0">
-                        {/* Background geometric element */}
-                        {/* <div className={`absolute -inset-4 bg-gradient-to-tr ${message.type === 'CEO' ? 'from-[#2a9fd8]/20 to-transparent' : 'from-indigo-100 to-transparent'} rounded-[2.5rem] -rotate-3 group-hover:rotate-0 transition-transform duration-700`}></div> */}
-
                         <div className="relative w-full max-w-[250px] sm:max-w-[350px] aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl">
                             <img
                                 src={message.image}

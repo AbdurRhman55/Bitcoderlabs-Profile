@@ -7,17 +7,19 @@ import Stats from '../components/Home/Stats'
 import TeamMembers from '../components/Home/TeamMembers'
 import Advisor from '../components/Home/Advisor'
 import Testimonials from '../components/Home/Testimonials'
+import JobPopup from '../components/Home/JobPopup'
 
 function Home() {
     return (
         <div className="bg-white">
+            {/* <JobPopup /> */}
             <HeroSection />
             <Stats />
             <div className="space-y-0">
                 <ExpertiseSection />
                 <CEOMessage />
-                <WhyChooseUs />
                 <TeamMembers />
+                <WhyChooseUs />
                 <Advisor />
                 <Testimonials />
             </div>

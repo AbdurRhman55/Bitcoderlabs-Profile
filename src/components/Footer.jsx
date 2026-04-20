@@ -12,11 +12,11 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
                     {/* Brand Column */}
-                    <div className="lg:col-span-5">
+                    <div className="lg:col-span-4">
                         <Link to="/" className="flex items-center gap-3 group">
-                            <img 
-                                src="/favicon.svg" 
-                                alt="Bitcoderlabs Logo" 
+                            <img
+                                src="/favicon.svg"
+                                alt="Bitcoderlabs Logo"
                                 className="h-12 w-auto brightness-110 group-hover:scale-110 transition-transform duration-300"
                             />
                             <span className="text-2xl font-black text-white tracking-tighter">
@@ -45,13 +45,26 @@ const Footer = () => {
                     </div>
 
                     {/* Quick Links Column */}
-                    <div className="lg:col-span-2">
+                    <div className="lg:col-span-3">
                         <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-8">Platform</h3>
                         <ul className="space-y-4">
-                            {['About Us', 'Our Services', 'Expertise', 'Case Studies', 'Careers'].map((item) => (
-                                <li key={item}>
-                                    <Link to={`/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 hover:text-primary font-medium transition-colors">
-                                        {item}
+                            {[
+                                { label: 'Home', path: '/' },
+                                { label: 'About Us', path: '/about' },
+                                { label: 'Services', path: '/services' },
+                                { label: 'Products', path: '/products' },
+                                { label: 'Training', path: '/training' },
+                                { label: 'Contact Us', path: '/contact' },
+                                { label: 'Careers', path: '/careers' },
+                                { label: 'Blog', path: '/blog' }
+                            ].map((item) => (
+                                <li key={item.label} className="group/item">
+                                    <Link
+                                        to={item.path}
+                                        className="text-gray-400 hover:text-primary font-medium transition-all duration-300 flex items-center gap-0 group-hover/item:gap-3"
+                                    >
+                                        {/* <span className="w-0 group-hover/item:w-4 h-[1px] bg-primary transition-all duration-300"></span> */}
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}
@@ -64,7 +77,7 @@ const Footer = () => {
                         <ul className="space-y-4">
                             {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Security'].map((item) => (
                                 <li key={item}>
-                                    <Link to={`/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 hover:text-primary font-medium transition-colors">
+                                    <Link to={`/${item.toLowerCase().split(' ').join('-')}`} className="text-gray-400 hover:text-primary font-medium transition-colors">
                                         {item}
                                     </Link>
                                 </li>
@@ -81,7 +94,7 @@ const Footer = () => {
                                     <FiMail size={18} />
                                 </div>
                                 <a href="mailto:hello@bitcoderlabs.com" className="text-gray-400 hover:text-white font-medium transition-colors">
-                                    bitcodelabs@gmail.com
+                                    bitcoderlabs@gmail.com
                                 </a>
                             </li>
                             <li className="flex gap-4">
