@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaArrowRight } from "react-icons/fa";
 
 export default function BlogPage() {
   const [active, setActive] = useState("All");
@@ -53,7 +53,7 @@ export default function BlogPage() {
   }
 
   return (
-    <section className="bg-[#f3e7dc] py-20">
+    <section className="bg-slate-100 py-20">
       {/* HEADER */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
@@ -169,8 +169,9 @@ export default function BlogPage() {
           {/* DETAIL VIEW */}
           {selectedBlog ? (
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
               className="bg-white rounded-2xl shadow-md overflow-hidden"
             >
               <img
@@ -213,30 +214,37 @@ export default function BlogPage() {
                 </p>
               )}
 
-              <AnimatePresence>
+              <AnimatePresence mode="wait">
                 {visibleBlogs.map((blog, i) => (
                   <motion.div
                     key={blog.id}
                     onClick={() => setSelectedBlog(blog)}
-                    initial={{ opacity: 0, y: 80 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    className={`flex flex-col md:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition cursor-pointer
+                    initial={{ opacity: 0, y: 35, scale: 0.98 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{
+                      duration: 0.55,
+                      ease: [0.22, 1, 0.36, 1],
+                      delay: i * 0.08,
+                    }}
+                    whileHover={{ y: -6 }}
+                    className={`flex flex-col md:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer
                       ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
                   >
-                    <div className="md:w-[37%] h-[270px]">
+                    <div className="md:w-[37%] h-[270px] overflow-hidden">
                       <img
                         src={blog.image}
                         alt=""
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       />
                     </div>
 
-                    <div className="p-6">
-                      <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-2xl">
+                    <div className="p-6 flex flex-col justify-center">
+                      <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-2xl w-fit">
                         {blog.tag}
                       </span>
 
-                      <h3 className="text-xl font-semibold mt-2">
+                      <h3 className="text-xl font-semibold mt-3">
                         {blog.title}
                       </h3>
 
@@ -247,6 +255,14 @@ export default function BlogPage() {
                       <span className="text-xs text-gray-400 mt-4 block">
                         {blog.date}
                       </span>
+
+                      {/* ✅ VIEW DETAILS BUTTON */}
+                      <button
+                        className="mt-5 w-fit px-5 py-2 rounded-lg bg-primary text-white text-sm font-medium flex items-center gap-2 hover:gap-3 transition-all duration-300"
+                      >
+                        View Details
+                        <FaArrowRight size={12} />
+                      </button>
                     </div>
                   </motion.div>
                 ))}

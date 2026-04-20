@@ -9,7 +9,7 @@ const topics = [
 
 function BlogHero() {
   return (
-    <section className="relative w-full min-h-[100vh] flex items-center overflow-hidden">
+    <section className="relative w-full min-h-[100vh] flex items-center overflow-hidden pt-22">
 
       {/* 🎥 VIDEO BACKGROUND */}
       <div className="absolute inset-0 z-0">
