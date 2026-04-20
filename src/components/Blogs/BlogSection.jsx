@@ -53,7 +53,7 @@ export default function BlogPage() {
   }
 
   return (
-    <section className="bg-[#f3e7dc] py-20">
+    <section className="bg-slate-100 py-20">
       {/* HEADER */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
@@ -81,10 +81,9 @@ export default function BlogPage() {
                     key={i}
                     onClick={() => setActive(cat)}
                     className={`cursor-pointer px-3 py-2 rounded-lg transition flex justify-between items-center
-                      ${
-                        active === cat
-                          ? "bg-primary text-white"
-                          : "text-gray-600 hover:bg-gray-100"
+                      ${active === cat
+                        ? "bg-primary text-white"
+                        : "text-gray-600 hover:bg-gray-100"
                       }`}
                   >
                     {cat}
