@@ -57,11 +57,11 @@ export default function BlogPage() {
     <section className="bg-[#f3e7dc] py-20">
       {/* HEADER */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+        <h2 className="text-4xl md:text-6xl font-black text-gray-900 animate-slide-in-left">
           Explore Our <span className="text-primary">Blogs</span>
         </h2>
 
-        <p className="text-gray-600 mt-3 max-w-xl mx-auto text-sm md:text-base">
+        <p className="text-gray-600 text-lg font-medium max-w-2xl mx-auto mt-3">
           Latest insights on web development, UI/UX, SEO & modern tech trends.
         </p>
       </div>
@@ -74,17 +74,18 @@ export default function BlogPage() {
 
             {/* Categories */}
             <div className="bg-white p-5 rounded-2xl shadow-sm">
-              <h4 className="font-semibold text-xl mb-4">Categories</h4>
+              <h4 className="font-bold text-xl mb-4">Categories</h4>
 
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 text-md text-bold">
                 {categories.map((cat, i) => (
                   <li
                     key={i}
                     onClick={() => setActive(cat)}
                     className={`cursor-pointer px-3 py-2 rounded-lg transition flex justify-between items-center
-                      ${active === cat
-                        ? "bg-primary text-white"
-                        : "text-gray-600 hover:bg-gray-100"
+                      ${
+                        active === cat
+                          ? "bg-primary text-white"
+                          : "text-gray-600 hover:bg-gray-100"
                       }`}
                   >
                     {cat}
@@ -96,7 +97,7 @@ export default function BlogPage() {
 
             {/* Recent Posts */}
             <div className="bg-white p-5 rounded-2xl shadow-sm">
-              <h4 className="font-semibold text-xl mb-4">Recent Posts</h4>
+              <h4 className="font-bold text-xl mb-4">Recent Posts</h4>
 
               <div className="space-y-4">
                 {blogs.slice(0, 3).map((blog, i) => (
@@ -120,7 +121,7 @@ export default function BlogPage() {
 
             {/* Newsletter */}
             <div className="bg-white p-5 rounded-2xl shadow-sm">
-              <h4 className="font-semibold text-xl mb-2">Stay Updated</h4>
+              <h4 className="font-bold text-xl mb-2">Stay Updated</h4>
 
               <Button
                 to="/contact"

@@ -71,9 +71,15 @@ function BlogHero() {
 
             <div className="space-y-3">
               {topics.map(({ icon: Icon, text }, i) => (
-                <div key={i} className="flex items-center gap-3  text-lg max-w-2xl bg-white/80 p-3 rounded-lg hover:bg-white/30 transition-all duration-300 cursor-pointer">
-                  <Icon className="text-primary" />
-                  <span className="text-gray-800">{text}</span>
+                <div
+                  key={i}
+                  className="group flex items-center gap-3 max-w-2xl rounded-xl bg-white/80 p-3 text-lg cursor-pointer transition hover:bg-primary"
+                >
+                  <Icon className="text-primary transition group-hover:text-white" />
+
+                  <span className="text-gray-800 transition group-hover:text-white">
+                    {text}
+                  </span>
                 </div>
               ))}
             </div>
