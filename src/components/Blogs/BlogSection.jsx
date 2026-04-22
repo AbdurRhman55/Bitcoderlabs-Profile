@@ -77,11 +77,12 @@ export default function BlogPage() {
                   <li
                     key={i}
                     onClick={() => setActive(cat)}
-                    className={`cursor-pointer px-3 py-2 rounded-lg transition flex justify-between items-center ${
-                      active === cat
-                        ? "bg-primary text-white"
-                        : "text-gray-600 hover:bg-gray-100"
-                    }`}
+                    className={`cursor-pointer px-3 py-2 rounded-lg transition flex justify-between items-center
+                      ${
+                        active === cat
+                          ? "bg-primary text-white"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
                   >
                     {cat}
                     <span className="text-xs">→</span>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram, FaPinterestP } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const Advisor = () => {
     const advisors = [
@@ -7,13 +7,13 @@ const Advisor = () => {
             name: 'Dr. Hamida Syed',
             designation: 'Advisor – Academia & Institutional Partnerships',
             image: '/Dr_Hamida.jpeg',
-            socials: { fb: '#', ig: '#', tw: '#', pt: '#' }
+            socials: { Li: '#', ig: '#', tw: '#', }
         },
         {
             name: 'Tashfeen Zia',
             designation: 'Advisor – Strategic Programs & Partnerships',
             image: '/Tashfeen_Zia.jpeg',
-            socials: { fb: '#', ig: '#', tw: '#', pt: '#' }
+            socials: { Li: '#', ig: '#', tw: '#', }
         }
     ];
 
@@ -55,10 +55,9 @@ const Advisor = () => {
 
                                 {/* Social Links */}
                                 <div className="flex gap-4 items-center">
-                                    <a href={advisor.socials.fb} className="hover:text-blue-400 transition-colors"><FaFacebookF size={14} /></a>
+                                    <a href={advisor.socials.Li} className="hover:text-blue-400 transition-colors"><FaLinkedin size={14} /></a>
                                     <a href={advisor.socials.ig} className="hover:text-blue-400 transition-colors"><FaInstagram size={14} /></a>
                                     <a href={advisor.socials.tw} className="hover:text-blue-400 transition-colors"><FaTwitter size={14} /></a>
-                                    <a href={advisor.socials.pt} className="hover:text-blue-400 transition-colors"><FaPinterestP size={14} /></a>
                                 </div>
                             </div>
                         </div>

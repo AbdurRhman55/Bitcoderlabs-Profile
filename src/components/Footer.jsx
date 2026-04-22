@@ -5,12 +5,12 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/f
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-900 border-t border-white/5 pt-20 pb-10 overflow-hidden relative">
+        <footer className="bg-gray-900 border-t border-white/5 pt-15 pb-5 overflow-hidden relative">
             {/* Background Accent */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-10">
                     {/* Brand Column */}
                     <div className="lg:col-span-4">
                         <Link to="/" className="flex items-center gap-3 group">
@@ -46,8 +46,8 @@ const Footer = () => {
 
                     {/* Quick Links Column */}
                     <div className="lg:col-span-3">
-                        <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-8">Platform</h3>
-                        <ul className="space-y-4">
+                        <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-4">Platform</h3>
+                        <ul className="space-y-2">
                             {[
                                 { label: 'Home', path: '/' },
                                 { label: 'About Us', path: '/about' },
@@ -56,14 +56,13 @@ const Footer = () => {
                                 { label: 'Training', path: '/training' },
                                 { label: 'Contact Us', path: '/contact' },
                                 { label: 'Careers', path: '/careers' },
-                                { label: 'Blog', path: '/blog' }
+                                { label: 'Blogs', path: '/blogs' }
                             ].map((item) => (
                                 <li key={item.label} className="group/item">
                                     <Link
                                         to={item.path}
                                         className="text-gray-400 hover:text-primary font-medium transition-all duration-300 flex items-center gap-0 group-hover/item:gap-3"
                                     >
-                                        {/* <span className="w-0 group-hover/item:w-4 h-[1px] bg-primary transition-all duration-300"></span> */}
                                         {item.label}
                                     </Link>
                                 </li>
@@ -73,8 +72,8 @@ const Footer = () => {
 
                     {/* Support Column */}
                     <div className="lg:col-span-2">
-                        <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-8">Legal</h3>
-                        <ul className="space-y-4">
+                        <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-4">Legal</h3>
+                        <ul className="space-y-2">
                             {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Security'].map((item) => (
                                 <li key={item}>
                                     <Link to={`/${item.toLowerCase().split(' ').join('-')}`} className="text-gray-400 hover:text-primary font-medium transition-colors">
@@ -87,7 +86,7 @@ const Footer = () => {
 
                     {/* Contact Column */}
                     <div className="lg:col-span-3">
-                        <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-8">Get In Touch</h3>
+                        <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-4">Get In Touch</h3>
                         <ul className="space-y-6">
                             <li className="flex gap-4">
                                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
@@ -123,10 +122,10 @@ const Footer = () => {
                     </p>
                     <div className="flex items-center gap-8 text-gray-500 font-bold text-[10px] uppercase tracking-widest">
                         <span className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                            System Operational
+                            <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse"></div>
+                            Always Innovating
                         </span>
-                        <span>V.2.0.4</span>
+                        <span>Architecting Next-Gen Solutions</span>
                     </div>
                 </div>
             </div>
