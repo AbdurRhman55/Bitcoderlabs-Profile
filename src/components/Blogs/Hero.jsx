@@ -1,4 +1,6 @@
+import React from 'react';
 import { FaCode, FaPaintBrush, FaChartLine, FaBolt } from "react-icons/fa";
+import Button from "../common/Button";
 
 const topics = [
   { icon: FaCode, text: "Modern Web Development" },
@@ -42,12 +44,21 @@ function BlogHero() {
           </p>
 
           <div className="flex justify-center md:justify-start gap-4 animate-fade-in delay-300">
-            <button className="bg-primary font-bold text-md text-white px-8 py-4 rounded-md shadow-lg hover:shadow-xl transition-all duration-300">
+            <Button
+              rounded="rounded-2xl"
+              size="hero"
+              onClick={() => document.getElementById('blog-section')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Explore Blogs
-            </button>
-            <button className="border text-md font-bold text-secondary border-gray-500 px-8 py-4 rounded-md hover:bg-blue-100 hover:text-primary transition-all duration-300">
+            </Button>
+            <Button
+              variant="outline"
+              size="hero"
+              rounded="rounded-2xl"
+              className="border-gray-500 text-secondary hover:bg-blue-100 hover:text-primary"
+            >
               Latest Posts
-            </button>
+            </Button>
           </div>
         </div>
 

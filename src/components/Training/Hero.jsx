@@ -1,5 +1,7 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiPhone, FiArrowRight } from 'react-icons/fi';
+import Button from '../common/Button';
 
 const TrainingHero = () => {
     return (
@@ -28,14 +30,25 @@ const TrainingHero = () => {
 
                 {/* ── CTA Buttons ── */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-14 animate-ultra-reveal-buttons">
-                    <Link to="/contact" className="group relative flex items-center justify-center gap-3 px-12 py-5 rounded-2xl bg-slate-900 text-white font-black text-lg shadow-2xl hover:bg-primary transition-all duration-300 hover:scale-[1.02] active:scale-95 overflow-hidden cursor-pointer">
-                        <FiPhone size={20} />
+                    <Button
+                        to="/contact"
+                        variant="dark"
+                        size="hero"
+                        rounded="rounded-2xl"
+                        icon={FiPhone}
+                        iconPosition="left"
+                    >
                         Join a Bootcamp
-                    </Link>
-                    <a href="#curriculum" className="flex items-center justify-center gap-3 px-12 py-5 rounded-2xl bg-white border-2 border-slate-100 text-slate-900 font-black text-lg hover:border-primary hover:text-primary transition-all duration-300 hover:scale-[1.02] active:scale-95 cursor-pointer">
+                    </Button>
+                    <Button
+                        href="#curriculum"
+                        variant="outline"
+                        size="hero"
+                        rounded="rounded-2xl"
+                        icon={FiArrowRight}
+                    >
                         Explore Courses
-                        <FiArrowRight size={20} />
-                    </a>
+                    </Button>
                 </div>
 
                 {/* ── Trust Banner ── */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import Button from './common/Button';
 
 const navLinks = [
     { id: 'home', label: 'Home', path: '/' },
@@ -84,20 +85,15 @@ const Navbar = () => {
                                 {/* Left Links */}
                                 <div className="flex items-center gap-2">
                                     {navLinks.slice(0, 3).map((link) => (
-                                        <Link
+                                        <Button
                                             key={link.id}
                                             to={link.path}
                                             onClick={() => setActiveLink(link.id)}
-                                            className={`
-                                                px-5 py-2 rounded-xl font-medium text-sm transition-all duration-300
-                                                ${activeLink === link.id
-                                                    ? 'bg-[#2a9fd8] text-white shadow-md'
-                                                    : 'text-[#2a9fd8] hover:bg-gray-100'
-                                                }
-                                            `}
+                                            variant={activeLink === link.id ? 'navActive' : 'nav'}
+                                            size="sm"
                                         >
                                             {link.label}
-                                        </Link>
+                                        </Button>
                                     ))}
                                 </div>
 
@@ -113,20 +109,15 @@ const Navbar = () => {
                                 {/* Right Links */}
                                 <div className="flex items-center gap-2">
                                     {navLinks.slice(3, 6).map((link) => (
-                                        <Link
+                                        <Button
                                             key={link.id}
                                             to={link.path}
                                             onClick={() => setActiveLink(link.id)}
-                                            className={`
-                                                px-5 py-2 rounded-xl font-medium text-sm transition-all duration-300
-                                                ${activeLink === link.id
-                                                    ? 'bg-[#2a9fd8] text-white shadow-md'
-                                                    : 'text-[#2a9fd8] hover:bg-gray-100'
-                                                }
-                                            `}
+                                            variant={activeLink === link.id ? 'navActive' : 'nav'}
+                                            size="sm"
                                         >
                                             {link.label}
-                                        </Link>
+                                        </Button>
                                     ))}
                                 </div>
                             </div>
@@ -144,12 +135,13 @@ const Navbar = () => {
                             </div>
 
                             {/* Hamburger Button */}
-                            <button
+                            <Button
                                 onClick={() => setIsMobileMenuOpen(true)}
-                                className="p-3 bg-[#2a9fd8] text-white rounded-full shadow-lg hover:bg-[#2389ba] transition-colors"
-                            >
-                                <FiMenu size={24} />
-                            </button>
+                                variant="primary"
+                                className="p-3 rounded-full"
+                                rounded="rounded-full"
+                                icon={FiMenu}
+                            />
                         </div>
                     </div>
 
@@ -182,12 +174,13 @@ const Navbar = () => {
                     </div>
 
                     {/* Close Button */}
-                    <button
+                    <Button
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center justify-center transition-all duration-300   "
-                    >
-                        <FiX size={42} className='font-thin' />
-                    </button>
+                        variant="ghost"
+                        className="p-2 -mr-2"
+                        icon={FiX}
+                        iconClassName="!text-4xl font-thin"
+                    />
                 </div>
 
                 {/* Thin divider */}
@@ -195,26 +188,28 @@ const Navbar = () => {
 
                 {/* Nav Links */}
                 <nav className="flex flex-col justify-center items-center px-6 pt-8 flex-1 gap-1">
-                    {navLinks.map((link, index) => (
-                        <Link
-                            key={link.id}
-                            to={link.path}
-                            onClick={() => handleLinkClick(link.id)}
-                            className={`flex   text-4xl w-full text-center transition-all duration-300 p-1 rounded-[16px]
-                                ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-[30px] opacity-0'}
-                                ${activeLink === link.id
-                                    ? 'font-semibold  text-[#2a9fd8]'
-                                    : 'font-normal bg-transparent text-[#1e293b] hover:bg-[#2a9fd8]/5'
-                                }`}
-                            style={{
-                                transitionDelay: isMobileMenuOpen ? `${index * 55}ms` : '0ms',
-                            }}
-                        >
-                            <span>{link.label}</span>
-
-
-                        </Link>
-                    ))}
+                    {navLinks.map((link, index) => {
+                        const Tag = link.path.startsWith('http') ? 'a' : Link;
+                        return (
+                            <Tag
+                                key={link.id}
+                                to={link.path}
+                                href={link.path}
+                                onClick={() => handleLinkClick(link.id)}
+                                className={`flex text-4xl w-full text-center transition-all duration-300 p-2 rounded-[16px]
+                                    ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-[30px] opacity-0'}
+                                    ${activeLink === link.id
+                                        ? 'font-bold text-[#2a9fd8]'
+                                        : 'font-normal bg-transparent text-[#1e293b] hover:bg-[#2a9fd8]/5'
+                                    }`}
+                                style={{
+                                    transitionDelay: isMobileMenuOpen ? `${index * 55}ms` : '0ms',
+                                }}
+                            >
+                                <span className="w-full">{link.label}</span>
+                            </Tag>
+                        );
+                    })}
                 </nav>
 
                 {/* Social Icons Section */}
@@ -222,20 +217,22 @@ const Navbar = () => {
                     <div className="h-[1px] bg-[#2a9fd8]/15 mb-8" />
                     <div className="flex items-center justify-center gap-6">
                         {[
-                            { Icon: FaFacebookF, href: "https://www.facebook.com/BitCoderLabs", color: "#3b5998" },
-                            { Icon: FaTwitter, href: "https://twitter.com/BitCoderLabs", color: "#1da1f2" },
-                            { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/bitcoderlabs/posts/?feedView=all", color: "#0077b5" },
-                            { Icon: FaInstagram, href: "https://www.instagram.com/bitcoderlabs/", color: "#e4405f" }
+                            { Icon: FaFacebookF, href: "https://www.facebook.com/BitCoderLabs" },
+                            { Icon: FaTwitter, href: "https://twitter.com/BitCoderLabs" },
+                            { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/bitcoderlabs/posts/?feedView=all" },
+                            { Icon: FaInstagram, href: "https://www.instagram.com/bitcoderlabs/" }
                         ].map((social, i) => (
-                            <a
+                            <Button
                                 key={i}
                                 href={social.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-12 h-12 flex items-center justify-center rounded-full bg-[#2a9fd8]/10 text-[#2a9fd8] hover:bg-[#2a9fd8] hover:text-white transition-all duration-300 shadow-sm border border-[#2a9fd8]/20"
+                                variant="outline"
+                                rounded="rounded-full"
+                                className="w-12 h-12 p-0 border-[#2a9fd8]/20 text-[#2a9fd8] hover:bg-[#2a9fd8] hover:text-white"
                             >
                                 <social.Icon size={20} />
-                            </a>
+                            </Button>
                         ))}
                     </div>
                     <p className="text-center text-gray-400 text-[11px] mt-8 tracking-[0.06em] uppercase">

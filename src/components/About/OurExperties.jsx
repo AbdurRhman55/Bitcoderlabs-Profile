@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from '../common/Button';
 import {
     SiReact,
     SiLaravel,
@@ -141,19 +142,16 @@ const OurExperties = () => {
                 {/* Category Filter */}
                 <div className="flex flex-wrap justify-center gap-3 mb-12">
                     {categories.map((category) => (
-                        <button
+                        <Button
                             key={category.id}
                             onClick={() => setActiveCategory(category.id)}
-                            className={`
-                px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300
-                ${activeCategory === category.id
-                                    ? 'bg-gray-900 text-white shadow-lg scale-105'
-                                    : 'bg-white text-gray-600 hover:bg-gray-100 shadow-md hover:shadow-lg'
-                                }
-              `}
+                            variant={activeCategory === category.id ? 'dark' : 'outline'}
+                            rounded="rounded-full"
+                            size="md"
+                            className={activeCategory === category.id ? 'scale-105' : 'text-gray-600'}
                         >
                             {category.name}
-                        </button>
+                        </Button>
                     ))}
                 </div>
 

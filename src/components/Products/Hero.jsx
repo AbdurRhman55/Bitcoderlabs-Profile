@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import Button from '../common/Button';
 
 const ProductHeroBitcoderlabs = () => {
     const products = [
@@ -49,19 +50,23 @@ const ProductHeroBitcoderlabs = () => {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-5 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-                        <button
+                        <Button
                             onClick={() => document.getElementById('portfolio-section')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="group w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-5 rounded-2xl bg-primary text-white font-black shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-1 transition-all cursor-pointer"
+                            rounded="rounded-2xl"
+                            size="hero"
+                            icon={FiArrowRight}
                         >
                             Explore All Products
-                            <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                        <Link
+                        </Button>
+                        <Button
                             to="/contact"
-                            className="w-full sm:w-auto px-10 py-5 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 font-bold hover:bg-white transition-all shadow-sm flex items-center justify-center cursor-pointer"
+                            variant="outline"
+                            className="bg-slate-50 border-slate-200 text-slate-900 hover:bg-white"
+                            rounded="rounded-2xl"
+                            size="hero"
                         >
                             Schedule Demo
-                        </Link>
+                        </Button>
                     </div>
                 </div>
             </div>

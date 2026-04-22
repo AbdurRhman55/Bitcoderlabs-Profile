@@ -1,6 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
+import Button from '../common/Button';
 
 const FinalCTA = () => {
     return (
@@ -26,13 +26,21 @@ const FinalCTA = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 items-center">
-                            <Link to="/contact" className="px-8 py-3 bg-primary hover:bg-[#2389ba] text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 group flex items-center gap-2 cursor-pointer">
+                            <Button
+                                to="/contact"
+                                variant="primary"
+                                icon={FiArrowRight}
+                            >
                                 Start Your Project
-                                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                            <a href="https://calendly.com/aizazalishah31/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl border border-white/10 backdrop-blur-md transition-all duration-300 cursor-pointer">
+                            </Button>
+                            <Button
+                                href="https://calendly.com/aizazalishah31/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                variant="secondary"
+                            >
                                 Consultation
-                            </a>
+                            </Button>
                         </div>
 
                         <p className="mt-8 text-gray-500 font-bold text-[10px] uppercase tracking-[0.2em]">

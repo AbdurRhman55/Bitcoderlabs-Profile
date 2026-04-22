@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FiCheckCircle, FiLoader, FiChevronDown } from 'react-icons/fi';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import Button from '../common/Button';
 
 
 const ContactSection = () => {
@@ -175,7 +176,14 @@ const ContactSection = () => {
                                         </p>
                                     </div>
                                     {formData.cv && (
-                                        <button type="button" onClick={() => setFormData(p => ({ ...p, cv: null }))} className="relative z-20 text-[10px] bg-white border border-slate-200 px-2 py-1 rounded-md hover:bg-red-50 hover:text-red-600 font-bold transition-all">Remove</button>
+                                        <Button
+                                            onClick={() => setFormData(p => ({ ...p, cv: null }))}
+                                            variant="ghost"
+                                            size="sm"
+                                            className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                                        >
+                                            Remove
+                                        </Button>
                                     )}
                                 </div>
                             </div>
@@ -214,9 +222,16 @@ const ContactSection = () => {
                             </div>
                         )}
 
-                        <button type="submit" disabled={status === "loading"} className={`w-full py-4 bg-[#2a9fd8] text-white font-bold rounded-xl hover:bg-[#2389ba] shadow-lg shadow-blue-100 transition-all active:scale-[0.98] text-sm mt-2 flex items-center justify-center gap-2 ${status === "loading" ? 'opacity-80' : ''}`}>
-                            {status === "loading" ? <><FiLoader className="animate-spin" /> {result}</> : "Sumbit Application"}
-                        </button>
+                        <Button
+                            type="submit"
+                            disabled={status === "loading"}
+                            className="w-full mt-2"
+                            icon={status === "loading" ? FiLoader : null}
+                            iconPosition="left"
+                            iconClassName={status === "loading" ? "animate-spin" : ""}
+                        >
+                            {status === "loading" ? result : "Submit Application"}
+                        </Button>
                     </form>
                 </div>
             </div>

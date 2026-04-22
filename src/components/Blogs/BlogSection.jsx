@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaArrowRight } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import Button from "../common/Button";
 
 export default function BlogPage() {
   const [active, setActive] = useState("All");
@@ -53,7 +54,7 @@ export default function BlogPage() {
   }
 
   return (
-    <section className="bg-slate-100 py-20">
+    <section className="bg-[#f3e7dc] py-20">
       {/* HEADER */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
@@ -121,9 +122,14 @@ export default function BlogPage() {
             <div className="bg-white p-5 rounded-2xl shadow-sm">
               <h4 className="font-semibold text-xl mb-2">Stay Updated</h4>
 
-              <button className="w-full bg-primary text-white py-2 rounded text-sm hover:opacity-90 transition">
+              <Button
+                to="/contact"
+                className="w-full"
+                size="sm"
+                rounded="rounded"
+              >
                 Contact Us
-              </button>
+              </Button>
 
               {/* Social */}
               <div className="mt-6 pt-5 border-t">
@@ -168,9 +174,8 @@ export default function BlogPage() {
           {/* DETAIL VIEW */}
           {selectedBlog ? (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: "easeOut" }}
               className="bg-white rounded-2xl shadow-md overflow-hidden"
             >
               <img
@@ -180,12 +185,16 @@ export default function BlogPage() {
               />
 
               <div className="p-6">
-                <button
+                <Button
+                  variant="ghost"
+                  size="sm"
                   onClick={() => setSelectedBlog(null)}
-                  className="text-sm text-primary mb-4"
+                  className="mb-4 !p-0"
+                  icon={() => <span className="mr-1">←</span>}
+                  iconPosition="left"
                 >
-                  ← Back to Blogs
-                </button>
+                  Back to Blogs
+                </Button>
 
                 <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-2xl">
                   {selectedBlog.tag}
@@ -213,37 +222,30 @@ export default function BlogPage() {
                 </p>
               )}
 
-              <AnimatePresence mode="wait">
+              <AnimatePresence>
                 {visibleBlogs.map((blog, i) => (
                   <motion.div
                     key={blog.id}
                     onClick={() => setSelectedBlog(blog)}
-                    initial={{ opacity: 0, y: 35, scale: 0.98 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{
-                      duration: 0.55,
-                      ease: [0.22, 1, 0.36, 1],
-                      delay: i * 0.08,
-                    }}
-                    whileHover={{ y: -6 }}
-                    className={`flex flex-col md:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer
+                    initial={{ opacity: 0, y: 80 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className={`flex flex-col md:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition cursor-pointer
                       ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
                   >
-                    <div className="md:w-[37%] h-[270px] overflow-hidden">
+                    <div className="md:w-[37%] h-[270px]">
                       <img
                         src={blog.image}
                         alt=""
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        className="w-full h-full object-cover"
                       />
                     </div>
 
-                    <div className="p-6 flex flex-col justify-center">
-                      <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-2xl w-fit">
+                    <div className="p-6">
+                      <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-2xl">
                         {blog.tag}
                       </span>
 
-                      <h3 className="text-xl font-semibold mt-3">
+                      <h3 className="text-xl font-semibold mt-2">
                         {blog.title}
                       </h3>
 
@@ -254,14 +256,6 @@ export default function BlogPage() {
                       <span className="text-xs text-gray-400 mt-4 block">
                         {blog.date}
                       </span>
-
-                      {/* ✅ VIEW DETAILS BUTTON */}
-                      <button
-                        className="mt-5 w-fit px-5 py-2 rounded-lg bg-primary text-white text-sm font-medium flex items-center gap-2 hover:gap-3 transition-all duration-300"
-                      >
-                        View Details
-                        <FaArrowRight size={12} />
-                      </button>
                     </div>
                   </motion.div>
                 ))}
@@ -270,12 +264,12 @@ export default function BlogPage() {
               {/* LOAD MORE */}
               {visibleCount < filteredBlogs.length && (
                 <div className="text-center mt-8">
-                  <button
+                  <Button
                     onClick={() => setVisibleCount((prev) => prev + 4)}
-                    className="bg-primary text-white px-6 py-2 rounded-lg hover:opacity-90 transition"
+                    size="md"
                   >
                     Load More
-                  </button>
+                  </Button>
                 </div>
               )}
             </>

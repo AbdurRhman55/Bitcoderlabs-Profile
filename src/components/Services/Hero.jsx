@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FiArrowRight, FiCheckCircle, FiLoader } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import Button from '../common/Button';
 
 const ServicesHero = () => {
     const [status, setStatus] = useState("idle"); // idle, loading, success, error
@@ -139,19 +140,21 @@ const ServicesHero = () => {
                     </div>
 
                     <div className="flex items-center justify-center lg:justify-start lg:gap-4 gap-2">
-                        <Link
+                        <Button
                             to="/about"
-                            className="flex items-center gap-2 px-8 py-4 rounded-xl text-white font-semibold text-sm transition-all duration-300 hover:opacity-90 hover:scale-105 shadow-lg cursor-pointer"
-                            style={{ backgroundColor: '#2a9fd8' }}
+                            size="hero"
+                            icon={FiArrowRight}
                         >
-                            Read More <FiArrowRight size={16} />
-                        </Link>
-                        <a
+                            Read More
+                        </Button>
+                        <Button
                             href="#core-services"
-                            className="flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all duration-300 cursor-pointer"
+                            variant="outline-light"
+                            size="hero"
+                            icon={FiArrowRight}
                         >
-                            Our Services <FiArrowRight size={16} />
-                        </a>
+                            Our Services
+                        </Button>
                     </div>
                 </div>
 
@@ -248,19 +251,17 @@ const ServicesHero = () => {
                             </div>
                         )}
 
-                        <button
+                        <Button
                             type="submit"
                             disabled={status === "loading"}
-                            className={`w-full py-4 rounded-full text-white font-bold text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2 ${status === "loading" ? 'opacity-80' : ''}`}
-                            style={{ backgroundColor: '#2a9fd8' }}
+                            className="w-full"
+                            rounded="rounded-full"
+                            icon={status === "loading" ? FiLoader : null}
+                            iconPosition="left"
+                            iconClassName={status === "loading" ? "animate-spin" : ""}
                         >
-                            {status === "loading" ? (
-                                <>
-                                    <FiLoader className="animate-spin" />
-                                    Submitting...
-                                </>
-                            ) : "Get a quote"}
-                        </button>
+                            {status === "loading" ? "Submitting..." : "Get a quote"}
+                        </Button>
                     </form>
                 </div>
             </div>

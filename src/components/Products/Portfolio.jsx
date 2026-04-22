@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { FiArrowRight, FiExternalLink, FiCode, FiLayers } from "react-icons/fi";
 import { Link } from 'react-router-dom';
+import Button from "../common/Button";
 
 const PortfolioPreview = () => {
     const [visibleItems, setVisibleItems] = useState([]);
@@ -158,9 +159,14 @@ const PortfolioPreview = () => {
                                 <div className="text-[10px] text-slate-500 font-black uppercase tracking-[0.2em]">{stat.label}</div>
                             </div>
                         ))}
-                        <Link to="/contact" className="px-12 py-5 rounded-[2rem] bg-primary text-white font-black hover:scale-105 transition-all shadow-xl shadow-primary/20 ring-4 ring-primary/10 cursor-pointer">
+                        <Button
+                            to="/contact"
+                            rounded="rounded-[2rem]"
+                            className="ring-4 ring-primary/10"
+                            size="lg"
+                        >
                             Get Started
-                        </Link>
+                        </Button>
                     </div>
                 </div>
             </div>

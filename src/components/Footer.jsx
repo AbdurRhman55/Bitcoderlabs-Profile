@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import Button from './common/Button';
 
 const Footer = () => {
     return (
@@ -33,13 +34,17 @@ const Footer = () => {
                                 { icon: FaLinkedinIn, link: "https://www.linkedin.com/company/bitcoderlabs/posts/?feedView=all" },
                                 { icon: FaInstagram, link: "https://www.instagram.com/bitcoderlabs/" }
                             ].map((social, i) => (
-                                <a
+                                <Button
                                     key={i}
                                     href={social.link}
-                                    className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 transform hover:-translate-y-1"
+                                    variant="secondary"
+                                    rounded="rounded-xl"
+                                    className="w-12 h-12 p-0 hover:-translate-y-1"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                 >
                                     <social.icon size={20} />
-                                </a>
+                                </Button>
                             ))}
                         </div>
                     </div>
@@ -120,12 +125,11 @@ const Footer = () => {
                     <p className="text-gray-500 font-medium text-sm">
                         &copy; 2026 Bitcoderlabs.
                     </p>
-                    <div className="flex items-center gap-8 text-gray-500 font-bold text-[10px] uppercase tracking-widest">
+                    <div className="flex items-center gap-8 text-gray-500 font-bold text-[10px] tracking-widest">
                         <span className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse"></div>
-                            Always Innovating
+                            For Any Query Contact Us:
+                            <span className="text-primary ">bitcoderlabs@gmail.com</span>
                         </span>
-                        <span>Architecting Next-Gen Solutions</span>
                     </div>
                 </div>
             </div>
