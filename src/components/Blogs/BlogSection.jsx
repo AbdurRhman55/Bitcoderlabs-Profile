@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaInstagram,
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaArrowRight,
-} from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaArrowRight } from "react-icons/fa";
 
 export default function BlogPage() {
   const [active, setActive] = useState("All");
@@ -16,9 +9,11 @@ export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
   const [categories, setCategories] = useState([]);
 
+  // ✅ NEW STATES
   const [search, setSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(4);
 
+  // ✅ FETCH DATA
   useEffect(() => {
     fetch("/blogs.json")
       .then((res) => res.json())
@@ -29,18 +24,24 @@ export default function BlogPage() {
       .catch((err) => console.error(err));
   }, []);
 
+  // ✅ RESET PAGINATION
   useEffect(() => {
     setVisibleCount(4);
   }, [active, search]);
 
+  // ✅ FILTER + SEARCH
   const filteredBlogs = blogs
-    .filter((blog) => (active === "All" ? true : blog.tag === active))
+    .filter((blog) =>
+      active === "All" ? true : blog.tag === active
+    )
     .filter((blog) =>
       blog.title.toLowerCase().includes(search.toLowerCase())
     );
 
+  // ✅ PAGINATION
   const visibleBlogs = filteredBlogs.slice(0, visibleCount);
 
+  // ✅ LOADING
   if (!blogs.length) {
     return (
       <div className="flex justify-center items-center h-[60vh]">
@@ -55,24 +56,26 @@ export default function BlogPage() {
     <section className="bg-slate-100 py-20">
       {/* HEADER */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+        <h2 className="text-4xl md:text-6xl font-black text-gray-900 animate-slide-in-left">
           Explore Our <span className="text-primary">Blogs</span>
         </h2>
 
-        <p className="text-gray-600 mt-3 max-w-xl mx-auto text-sm md:text-base">
+        <p className="text-gray-600 text-lg font-medium max-w-2xl mx-auto mt-3">
           Latest insights on web development, UI/UX, SEO & modern tech trends.
         </p>
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 grid md:grid-cols-4 gap-10">
-        {/* SIDEBAR */}
+
+        {/* 🔹 SIDEBAR */}
         <div className="md:col-span-1">
           <div className="sticky top-24 space-y-6">
+
             {/* Categories */}
             <div className="bg-white p-5 rounded-2xl shadow-sm">
-              <h4 className="font-semibold text-xl mb-4">Categories</h4>
+              <h4 className="font-bold text-xl mb-4">Categories</h4>
 
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 text-md text-bold">
                 {categories.map((cat, i) => (
                   <li
                     key={i}
@@ -93,7 +96,7 @@ export default function BlogPage() {
 
             {/* Recent Posts */}
             <div className="bg-white p-5 rounded-2xl shadow-sm">
-              <h4 className="font-semibold text-xl mb-4">Recent Posts</h4>
+              <h4 className="font-bold text-xl mb-4">Recent Posts</h4>
 
               <div className="space-y-4">
                 {blogs.slice(0, 3).map((blog, i) => (
@@ -115,20 +118,13 @@ export default function BlogPage() {
               </div>
             </div>
 
-            {/* Contact */}
+            {/* Newsletter */}
             <div className="bg-white p-5 rounded-2xl shadow-sm">
-              <h4 className="font-semibold text-xl mb-4">Stay Updated</h4>
+              <h4 className="font-bold text-xl mb-2">Stay Updated</h4>
 
-              <Link
-                to="/contact"
-                className="w-full px-5 py-3 bg-primary hover:bg-[#2389ba] text-white font-semibold text-sm rounded-xl shadow-[0_10px_25px_rgba(42,159,216,0.25)] transition-all duration-500 hover:scale-105 active:scale-95 group inline-flex items-center justify-center gap-2"
-              >
+              <button className="w-full bg-primary text-white py-2 rounded text-sm hover:opacity-90 transition">
                 Contact Us
-                <FaArrowRight
-                  size={12}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </Link>
+              </button>
 
               {/* Social */}
               <div className="mt-6 pt-5 border-t">
@@ -137,15 +133,12 @@ export default function BlogPage() {
                 </h5>
 
                 <div className="flex gap-3">
-                  {[
-                    FaFacebookF,
-                    FaTwitter,
-                    FaLinkedinIn,
-                    FaInstagram,
-                  ].map((Icon, i) => (
+                  {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram].map((Icon, i) => (
                     <div
                       key={i}
-                      className="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-100 text-primary hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer shadow-sm"
+                      className="w-11 h-11 flex items-center justify-center rounded-xl 
+                      bg-gray-100 text-primary hover:bg-primary hover:text-white 
+                      transition-all duration-300 cursor-pointer shadow-sm"
                     >
                       <Icon size={16} />
                     </div>
@@ -153,12 +146,14 @@ export default function BlogPage() {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
 
-        {/* BLOG CONTENT */}
+        {/* 🔹 BLOG CONTENT */}
         <div className="md:col-span-3 space-y-10">
-          {/* Search */}
+
+          {/* 🔍 SEARCH */}
           {!selectedBlog && (
             <div className="mb-6">
               <input
@@ -171,12 +166,12 @@ export default function BlogPage() {
             </div>
           )}
 
-          {/* Detail View */}
+          {/* DETAIL VIEW */}
           {selectedBlog ? (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
               className="bg-white rounded-2xl shadow-md overflow-hidden"
             >
               <img
@@ -212,28 +207,29 @@ export default function BlogPage() {
             </motion.div>
           ) : (
             <>
-              {/* No Result */}
+              {/* NO RESULT */}
               {filteredBlogs.length === 0 && (
                 <p className="text-center text-gray-500 mt-10">
-                  No blogs found 
+                  No blogs found 😢
                 </p>
               )}
 
-              <AnimatePresence>
+              <AnimatePresence mode="wait">
                 {visibleBlogs.map((blog, i) => (
                   <motion.div
                     key={blog.id}
-                    initial={{ opacity: 0, y: 35 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    onClick={() => setSelectedBlog(blog)}
+                    initial={{ opacity: 0, y: 35, scale: 0.98 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, amount: 0.2 }}
                     transition={{
                       duration: 0.55,
+                      ease: [0.22, 1, 0.36, 1],
                       delay: i * 0.08,
                     }}
                     whileHover={{ y: -6 }}
-                    className={`flex flex-col md:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 ${
-                      i % 2 !== 0 ? "md:flex-row-reverse" : ""
-                    }`}
+                    className={`flex flex-col md:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer
+                      ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
                   >
                     <div className="md:w-[37%] h-[270px] overflow-hidden">
                       <img
@@ -260,42 +256,34 @@ export default function BlogPage() {
                         {blog.date}
                       </span>
 
-                      {/* View Details */}
-                      <Link
-                        to={`/blog/${blog.id}`}
-                        className="mt-5 w-fit px-5 py-3 bg-primary hover:bg-[#2389ba] text-white font-semibold text-sm rounded-xl shadow-[0_10px_25px_rgba(42,159,216,0.25)] transition-all duration-500 hover:scale-105 active:scale-95 group inline-flex items-center gap-2"
+                      {/* ✅ VIEW DETAILS BUTTON */}
+                      <button
+                        className="mt-5 w-fit px-5 py-2 rounded-lg bg-primary text-white text-sm font-medium flex items-center gap-2 hover:gap-3 transition-all duration-300"
                       >
                         View Details
-                        <FaArrowRight
-                          size={12}
-                          className="transition-transform group-hover:translate-x-1"
-                        />
-                      </Link>
+                        <FaArrowRight size={12} />
+                      </button>
                     </div>
                   </motion.div>
                 ))}
               </AnimatePresence>
 
-              {/* Load More */}
+              {/* LOAD MORE */}
               {visibleCount < filteredBlogs.length && (
                 <div className="text-center mt-8">
                   <button
-                    onClick={() =>
-                      setVisibleCount((prev) => prev + 4)
-                    }
-                    className="px-6 py-3 bg-primary hover:bg-[#2389ba] text-white font-semibold text-sm rounded-xl shadow-[0_10px_25px_rgba(42,159,216,0.25)] transition-all duration-500 hover:scale-105 active:scale-95 group inline-flex items-center gap-2"
+                    onClick={() => setVisibleCount((prev) => prev + 4)}
+                    className="bg-primary text-white px-6 py-2 rounded-lg hover:opacity-90 transition"
                   >
                     Load More
-                    <FaArrowRight
-                      size={12}
-                      className="transition-transform group-hover:translate-x-1"
-                    />
                   </button>
                 </div>
               )}
             </>
           )}
+
         </div>
+
       </div>
     </section>
   );

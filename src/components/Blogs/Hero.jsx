@@ -42,10 +42,10 @@ function BlogHero() {
           </p>
 
           <div className="flex justify-center md:justify-start gap-4 animate-fade-in delay-300">
-            <button className="bg-primary font-bold text-md text-white px-8 py-4 rounded-md shadow-lg hover:shadow-xl transition-all duration-300">
+            <button className="bg-primary font-bold text-md text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
               Explore Blogs
             </button>
-            <button className="border text-md font-bold text-secondary border-gray-500 px-8 py-4 rounded-md hover:bg-blue-100 hover:text-primary transition-all duration-300">
+            <button className="border text-md font-bold text-secondary border-gray-500 px-8 py-4 rounded-xl hover:bg-blue-100 hover:text-primary transition-all duration-300">
               Latest Posts
             </button>
           </div>
@@ -62,7 +62,7 @@ function BlogHero() {
   {topics.map(({ icon: Icon, text }, i) => (
     <div
       key={i}
-      className="group flex items-center gap-3 max-w-2xl rounded-lg bg-white/80 p-3 text-lg cursor-pointer transition hover:bg-primary"
+      className="group flex items-center gap-3 max-w-2xl rounded-xl bg-white/80 p-3 text-lg cursor-pointer transition hover:bg-primary"
     >
       <Icon className="text-primary transition group-hover:text-white" />
       
