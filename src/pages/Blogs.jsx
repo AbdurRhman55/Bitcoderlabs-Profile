@@ -1,6 +1,5 @@
 import React from 'react'
-import BlogHero from '../components/Blogs/hero'
-// import FeaturedBlogs from '../components/Blogs/featuredblog'
+import BlogHero from '../components/Blogs/Hero'
 import BlogSection from '../components/Blogs/BlogSection'
 
 function Blogs() {
