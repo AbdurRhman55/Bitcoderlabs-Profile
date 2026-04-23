@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const TeamMembers = () => {
@@ -29,14 +29,6 @@ const TeamMembers = () => {
         },
         {
             id: 4,
-            image: '/Roha.jpg',
-            name: 'Roha Moeen',
-            role: 'Product Manager',
-            linkedin: 'https://www.linkedin.com/in/roha-moeen-376601385/',
-            github: '#'
-        },
-        {
-            id: 5,
             image: '/Shah Fahad.jpeg',
             name: 'Shah Fahad',
             role: 'PHP & Laravel Developer',
@@ -44,7 +36,7 @@ const TeamMembers = () => {
             github: 'https://github.com/Shah-Fahad124'
         },
         {
-            id: 6,
+            id: 5,
             image: '/Irfan.jpeg',
             name: 'Irfan',
             role: 'Back End Developer',
@@ -53,35 +45,189 @@ const TeamMembers = () => {
         },
     ];
 
-    const [activeIndex, setActiveIndex] = useState(0);
+    const PIXELS_PER_CARD = window.innerWidth < 768 ? 200 : 350;
+    const AUTO_SLIDE_INTERVAL = 4000;
+    const MAX_VELOCITY = 3;
+    const MOMENTUM_FRICTION = 0.88;
+
+    // Refs for drag state (avoids stale closures)
+    const floatIndexRef = useRef(0);
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const lastX = useRef(0);
+    const velocity = useRef(0);
+    const lastTime = useRef(0);
+    const baseIndex = useRef(0);
+    const autoSlideRef = useRef(null);
+    const carouselRef = useRef(null);
+    const momentumRef = useRef(null);
+    const dragRafRef = useRef(null);
+    const isAutoSliding = useRef(false);
+    const [, forceRender] = useState(0);
+
+    const triggerRender = useCallback(() => forceRender((t) => t + 1), []);
+
+    const updateIndex = useCallback((val) => {
+        floatIndexRef.current = typeof val === 'function' ? val(floatIndexRef.current) : val;
+        triggerRender();
+    }, [triggerRender]);
+
+    const wrapIndex = useCallback((idx) => {
+        const t = developers.length;
+        return ((idx % t) + t) % t;
+    }, [developers.length]);
+
+    // Auto-slide controls
+    const startAutoSlide = useCallback(() => {
+        if (autoSlideRef.current) clearInterval(autoSlideRef.current);
+        autoSlideRef.current = setInterval(() => {
+            isAutoSliding.current = true;
+            updateIndex((p) => p + 1);
+            setTimeout(() => { isAutoSliding.current = false; }, 1000);
+        }, AUTO_SLIDE_INTERVAL);
+    }, [updateIndex]);
+
+    const stopAutoSlide = useCallback(() => {
+        if (autoSlideRef.current) { clearInterval(autoSlideRef.current); autoSlideRef.current = null; }
+    }, []);
+
+    const stopMomentum = useCallback(() => {
+        if (momentumRef.current) { cancelAnimationFrame(momentumRef.current); momentumRef.current = null; }
+    }, []);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setActiveIndex((prev) => (prev + 1) % developers.length);
-        }, 4000);
-        return () => clearInterval(interval);
-    }, [developers.length]);
+        startAutoSlide();
+        const handleResize = () => triggerRender();
+        window.addEventListener('resize', handleResize);
+        return () => {
+            stopAutoSlide();
+            stopMomentum();
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [startAutoSlide, stopAutoSlide, stopMomentum, triggerRender]);
+
+    // Drag handlers
+    const onDown = useCallback((e) => {
+        isDragging.current = true;
+        stopMomentum();
+        stopAutoSlide();
+        if (dragRafRef.current) cancelAnimationFrame(dragRafRef.current);
+        const x = e.clientX ?? 0;
+        startX.current = x;
+        lastX.current = x;
+        lastTime.current = Date.now();
+        velocity.current = 0;
+        baseIndex.current = floatIndexRef.current;
+    }, [stopAutoSlide, stopMomentum]);
+
+    const onMove = useCallback((e) => {
+        if (!isDragging.current) return;
+        const x = e.clientX ?? 0;
+        const now = Date.now();
+        const dt = now - lastTime.current;
+
+        if (dt > 0) {
+            const instant = (-(x - lastX.current) / PIXELS_PER_CARD) / dt * 1000;
+            velocity.current = Math.max(-MAX_VELOCITY, Math.min(MAX_VELOCITY, velocity.current * 0.8 + instant * 0.2));
+        }
+        lastX.current = x;
+        lastTime.current = now;
+
+        if (dragRafRef.current) cancelAnimationFrame(dragRafRef.current);
+        dragRafRef.current = requestAnimationFrame(() => {
+            updateIndex(baseIndex.current + (-(x - startX.current) / PIXELS_PER_CARD));
+        });
+    }, [updateIndex]);
+
+    const onUp = useCallback(() => {
+        if (!isDragging.current) return;
+        isDragging.current = false;
+        if (dragRafRef.current) cancelAnimationFrame(dragRafRef.current);
+
+        const vel = velocity.current;
+        if (Math.abs(vel) > 0.5) {
+            let v = vel;
+            let last = performance.now();
+            const animate = (now) => {
+                v *= MOMENTUM_FRICTION;
+                updateIndex((p) => p + v * ((now - last) / 1000));
+                last = now;
+                if (Math.abs(v) > 0.2) {
+                    momentumRef.current = requestAnimationFrame(animate);
+                } else {
+                    updateIndex((p) => Math.round(p));
+                    setTimeout(startAutoSlide, 2500);
+                }
+            };
+            momentumRef.current = requestAnimationFrame(animate);
+        } else {
+            updateIndex((p) => Math.round(p));
+            setTimeout(startAutoSlide, 2500);
+        }
+    }, [startAutoSlide, updateIndex]);
+
+    // Event listeners
+    useEffect(() => {
+        const el = carouselRef.current;
+        if (!el) return;
+        const md = (e) => { e.preventDefault(); onDown(e); };
+        const mm = (e) => onMove(e);
+        const mu = () => onUp();
+        const ts = (e) => onDown(e.touches[0]);
+        const tm = (e) => onMove(e.touches[0]);
+        const te = () => onUp();
+
+        el.addEventListener('mousedown', md);
+        window.addEventListener('mousemove', mm);
+        window.addEventListener('mouseup', mu);
+        el.addEventListener('touchstart', ts, { passive: true });
+        window.addEventListener('touchmove', tm, { passive: true });
+        window.addEventListener('touchend', te);
+
+        return () => {
+            el.removeEventListener('mousedown', md);
+            window.removeEventListener('mousemove', mm);
+            window.removeEventListener('mouseup', mu);
+            el.removeEventListener('touchstart', ts);
+            window.removeEventListener('touchmove', tm);
+            window.removeEventListener('touchend', te);
+        };
+    }, [onDown, onMove, onUp]);
+
+    const activeIndex = Math.round(wrapIndex(floatIndexRef.current));
 
     const getCardStyle = (index) => {
         const total = developers.length;
-        let diff = index - activeIndex;
+        const cur = floatIndexRef.current;
+        const frac = cur - Math.floor(cur);
+        const floor = wrapIndex(Math.floor(cur));
+        let diff = index - floor;
         if (diff > total / 2) diff -= total;
         if (diff < -total / 2) diff += total;
+        const d = diff - frac;
+        const abs = Math.abs(d);
+        const isMobile = window.innerWidth < 768;
+        const spacing = isMobile ? window.innerWidth : 300;
+        const depth = isMobile ? 0 : 120;
+        const rotation = isMobile ? 0 : 25;
+        // Snap faster (0.4s) than auto-slide (0.8s) for better tactile feedback
+        const transition = isDragging.current ? '0.12s' : (momentumRef.current ? '0.06s' : isAutoSliding.current ? '0.8s' : '0.4s');
 
-        const isVisible = Math.abs(diff) <= 3;
+        // On mobile, only show the active card (and the one transitioning)
+        const opacity = isMobile 
+            ? (abs > 0.95 ? 0 : 1) 
+            : Math.max(0, 1 - abs * 0.25);
 
-        const rotationY = -diff * 25;
-        const translateX = diff * 300;
-        const translateZ = -Math.abs(diff) * 120;
-
-        const opacity = isVisible ? (1 - Math.abs(diff) * 0.3) : 0;
-        const scale = 1 - (Math.abs(diff) * 0.08);
+        const scale = isMobile
+            ? (abs > 0.95 ? 0.9 : 1)
+            : Math.max(0.5, 1 - abs * 0.08);
 
         return {
-            transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotationY}deg) scale(${scale})`,
-            opacity: Math.max(0, opacity),
-            zIndex: 10 - Math.abs(diff),
-            display: isVisible ? 'block' : 'none'
+            transform: `translateX(${d * spacing}px) translateZ(${-abs * depth}px) rotateY(${-d * rotation}deg) scale(${scale})`,
+            opacity: opacity,
+            zIndex: 10 - Math.round(abs),
+            transition: `all ${transition} cubic-bezier(0.23, 1, 0.32, 1)`,
+            willChange: 'transform, opacity',
         };
     };
 
@@ -92,9 +238,7 @@ const TeamMembers = () => {
                 <div className="space-y-6 text-center">
                     <div className="inline-block">
                         <div className="flex items-center justify-center gap-2 mb-3">
-                            <div className="w-10 h-0.5 bg-[#2a9fd8]"></div>
                             <span className="text-xs font-bold text-[#2a9fd8] uppercase tracking-[0.2em]">Our Team</span>
-                            <div className="w-10 h-0.5 bg-[#2a9fd8]"></div>
                         </div>
                         <h2 className="text-4xl md:text-6xl font-black text-[#1e293b] tracking-tighter uppercase leading-none">
                             Meet The <br />
@@ -107,22 +251,27 @@ const TeamMembers = () => {
                 </div>
 
                 {/* Team Carousel */}
-                <div className="w-full relative flex justify-center items-center [perspective:2000px] h-[450px] md:h-[550px] overflow-visible">
+                <div
+                    ref={carouselRef}
+                    className="w-full relative flex justify-center items-center [perspective:2000px] h-[450px] md:h-[550px] overflow-visible select-none"
+                    style={{ cursor: isDragging.current ? 'grabbing' : 'grab' }}
+                >
                     <div className="relative w-full h-full [transform-style:preserve-3d] flex justify-center items-center">
                         {developers.map((dev, index) => {
-                            const isActive = index === activeIndex;
+                            const isActive = index === activeIndex && !isDragging.current;
                             return (
                                 <div
                                     key={dev.id}
-                                    className="absolute transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] [transform-style:preserve-3d]"
+                                    className="absolute [transform-style:preserve-3d]"
                                     style={getCardStyle(index)}
                                 >
-                                    <div className="relative w-[240px] h-[370px] md:w-[280px] md:h-[440px] rounded-[30px] p-[2px] bg-gradient-to-br from-[#2a9fd8]/40 to-transparent shadow-2xl overflow-hidden backdrop-blur-sm">
+                                    <div className="relative w-[260px] h-[390px] md:w-[280px] md:h-[460px] rounded-[30px] p-[2px] bg-gradient-to-br from-[#2a9fd8]/40 to-transparent shadow-2xl overflow-hidden backdrop-blur-sm">
                                         <div className="w-full h-full rounded-[28px] overflow-hidden bg-white relative group">
                                             <img
                                                 src={dev.image}
                                                 alt={dev.name}
                                                 className="w-full h-full object-cover transition-transform duration-1000"
+                                                draggable={false}
                                             />
 
                                             <div className={`absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-1000 ${isActive ? 'opacity-100' : 'opacity-0'}`}>

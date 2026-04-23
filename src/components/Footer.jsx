@@ -29,22 +29,20 @@ const Footer = () => {
                         </p>
                         <div className="mt-10 flex gap-4">
                             {[
-                                { icon: FaFacebookF, link: "https://www.facebook.com/BitCoderLabs" },
-                                { icon: FaTwitter, link: "https://twitter.com/BitCoderLabs" },
-                                { icon: FaLinkedinIn, link: "https://www.linkedin.com/company/bitcoderlabs/posts/?feedView=all" },
-                                { icon: FaInstagram, link: "https://www.instagram.com/bitcoderlabs/" }
+                                { Icon: FaFacebookF, href: "https://www.facebook.com/BitCoderLabs" },
+                                { Icon: FaTwitter, href: "https://twitter.com/BitCoderLabs" },
+                                { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/bitcoderlabs/posts/?feedView=all" },
+                                { Icon: FaInstagram, href: "https://www.instagram.com/bitcoderlabs/" }
                             ].map((social, i) => (
-                                <Button
+                                <a
                                     key={i}
-                                    href={social.link}
-                                    variant="secondary"
-                                    rounded="rounded-xl"
-                                    className="w-12 h-12 p-0 hover:-translate-y-1"
+                                    href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white hover:bg-primary transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(42,159,216,0.3)] group"
                                 >
-                                    <social.icon size={20} />
-                                </Button>
+                                    <social.Icon size={20} className="transition-transform group-hover:scale-110" />
+                                </a>
                             ))}
                         </div>
                     </div>

@@ -222,17 +222,15 @@ const Navbar = () => {
                             { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/bitcoderlabs/posts/?feedView=all" },
                             { Icon: FaInstagram, href: "https://www.instagram.com/bitcoderlabs/" }
                         ].map((social, i) => (
-                            <Button
+                            <a
                                 key={i}
                                 href={social.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                variant="outline"
-                                rounded="rounded-full"
-                                className="w-12 h-12 p-0 border-[#2a9fd8]/20 text-[#2a9fd8] hover:bg-[#2a9fd8] hover:text-white"
+                                className="w-12 h-12 flex items-center justify-center rounded-full border border-primary/20 text-primary hover:bg-primary hover:text-white transition-all duration-300 transform active:scale-95 group"
                             >
-                                <social.Icon size={20} />
-                            </Button>
+                                <social.Icon size={20} className="transition-transform group-hover:scale-110" />
+                            </a>
                         ))}
                     </div>
                     <p className="text-center text-gray-400 text-[11px] mt-8 tracking-[0.06em] uppercase">
