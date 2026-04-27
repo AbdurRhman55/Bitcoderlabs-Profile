@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaArrowRight,
+} from "react-icons/fa";
 import Button from "../common/Button";
 
 export default function BlogPage() {
@@ -10,11 +16,9 @@ export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  // ✅ NEW STATES
   const [search, setSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(4);
 
-  // ✅ FETCH DATA
   useEffect(() => {
     fetch("/blogs.json")
       .then((res) => res.json())
@@ -25,24 +29,18 @@ export default function BlogPage() {
       .catch((err) => console.error(err));
   }, []);
 
-  // ✅ RESET PAGINATION
   useEffect(() => {
     setVisibleCount(4);
   }, [active, search]);
 
-  // ✅ FILTER + SEARCH
   const filteredBlogs = blogs
-    .filter((blog) =>
-      active === "All" ? true : blog.tag === active
-    )
+    .filter((blog) => (active === "All" ? true : blog.tag === active))
     .filter((blog) =>
       blog.title.toLowerCase().includes(search.toLowerCase())
     );
 
-  // ✅ PAGINATION
   const visibleBlogs = filteredBlogs.slice(0, visibleCount);
 
-  // ✅ LOADING
   if (!blogs.length) {
     return (
       <div className="flex justify-center items-center h-[60vh]">
@@ -54,7 +52,7 @@ export default function BlogPage() {
   }
 
   return (
-    <section className="bg-[#f3e7dc] py-20">
+    <section id="blog-section" className=" bg-slate-100 py-20">
       {/* HEADER */}
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-6xl font-black text-gray-900 animate-slide-in-left">
@@ -67,11 +65,9 @@ export default function BlogPage() {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 grid md:grid-cols-4 gap-10">
-
-        {/* 🔹 SIDEBAR */}
+        {/* SIDEBAR */}
         <div className="md:col-span-1">
           <div className="sticky top-24 space-y-6">
-
             {/* Categories */}
             <div className="bg-white p-5 rounded-2xl shadow-sm">
               <h4 className="font-bold text-xl mb-4">Categories</h4>
@@ -81,15 +77,13 @@ export default function BlogPage() {
                   <li
                     key={i}
                     onClick={() => setActive(cat)}
-                    className={`cursor-pointer px-3 py-2 rounded-lg transition flex justify-between items-center
-                      ${
-                        active === cat
-                          ? "bg-primary text-white"
-                          : "text-gray-600 hover:bg-gray-100"
-                      }`}
+                    className={`cursor-pointer px-3 py-2 rounded-lg transition flex justify-between items-center ${
+                      active === cat
+                        ? "bg-primary text-white"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
                   >
                     {cat}
-                    <span className="text-xs">→</span>
                   </li>
                 ))}
               </ul>
@@ -132,34 +126,31 @@ export default function BlogPage() {
                 Contact Us
               </Button>
 
-              {/* Social */}
               <div className="mt-6 pt-5 border-t">
                 <h5 className="text-sm font-semibold text-gray-700 mb-3">
                   Follow Us
                 </h5>
 
                 <div className="flex gap-3">
-                  {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram].map((Icon, i) => (
-                    <div
-                      key={i}
-                      className="w-11 h-11 flex items-center justify-center rounded-xl 
-                      bg-gray-100 text-primary hover:bg-primary hover:text-white 
-                      transition-all duration-300 cursor-pointer shadow-sm"
-                    >
-                      <Icon size={16} />
-                    </div>
-                  ))}
+                  {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram].map(
+                    (Icon, i) => (
+                      <div
+                        key={i}
+                        className="w-11 h-11 flex items-center justify-center rounded-xl bg-gray-100 text-primary hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer shadow-sm"
+                      >
+                        <Icon size={16} />
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 
-        {/* 🔹 BLOG CONTENT */}
+        {/* BLOG CONTENT */}
         <div className="md:col-span-3 space-y-10">
-
-          {/* 🔍 SEARCH */}
+          {/* SEARCH */}
           {!selectedBlog && (
             <div className="mb-6">
               <input
@@ -219,7 +210,7 @@ export default function BlogPage() {
               {/* NO RESULT */}
               {filteredBlogs.length === 0 && (
                 <p className="text-center text-gray-500 mt-10">
-                  No blogs found 😢
+                  No blogs found
                 </p>
               )}
 
@@ -227,11 +218,10 @@ export default function BlogPage() {
                 {visibleBlogs.map((blog, i) => (
                   <motion.div
                     key={blog.id}
-                    onClick={() => setSelectedBlog(blog)}
                     initial={{ opacity: 0, y: 80 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className={`flex flex-col md:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition cursor-pointer
-                      ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
+                    className={`flex flex-col md:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition
+                    ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
                   >
                     <div className="md:w-[37%] h-[270px]">
                       <img
@@ -257,6 +247,16 @@ export default function BlogPage() {
                       <span className="text-xs text-gray-400 mt-4 block">
                         {blog.date}
                       </span>
+
+                      {/* ONLY VIEW DETAIL BUTTON ADDED */}
+                      <Button
+                        onClick={() => setSelectedBlog(blog)}
+                        className="mt-5"
+                        size="sm"
+                        // icon={FaArrowRight}
+                      >
+                        View Details
+                      </Button>
                     </div>
                   </motion.div>
                 ))}
@@ -266,7 +266,9 @@ export default function BlogPage() {
               {visibleCount < filteredBlogs.length && (
                 <div className="text-center mt-8">
                   <Button
-                    onClick={() => setVisibleCount((prev) => prev + 4)}
+                    onClick={() =>
+                      setVisibleCount((prev) => prev + 4)
+                    }
                     size="md"
                   >
                     Load More
@@ -275,9 +277,7 @@ export default function BlogPage() {
               )}
             </>
           )}
-
         </div>
-
       </div>
     </section>
   );

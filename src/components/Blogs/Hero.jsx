@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { FaCode, FaPaintBrush, FaChartLine, FaBolt } from "react-icons/fa";
 import Button from "../common/Button";
 
@@ -12,8 +12,8 @@ const topics = [
 function BlogHero() {
   return (
     <section className="relative w-full min-h-[100vh] flex items-center overflow-hidden pt-22">
-
-      {/* 🎥 VIDEO BACKGROUND */}
+      
+      {/* VIDEO */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
@@ -23,63 +23,62 @@ function BlogHero() {
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/blog-hero-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
-        {/* Optional: Light overlay for better readability */}
-        <div className="absolute inset-0 bg-blue-30/20 backdrop-blur-sm "></div>
+        <div className="absolute inset-0 bg-blue-30/20 backdrop-blur-sm"></div>
       </div>
 
-      {/* ✨ CONTENT */}
+      {/* CONTENT */}
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
 
-        {/* LEFT TEXT */}
+        {/* LEFT */}
         <div className="space-y-6 text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-black text-secondary animate-slide-in-left">
+          <h1 className="text-4xl md:text-6xl font-black text-secondary">
             Insights That <br />
-            <span className="text-">Drive Innovation</span>
+            <span>Drive Innovation</span>
           </h1>
 
-          <p className="text-secondary text-lg font-medium max-w-md animate-fade-in delay-200">
-            Stay ahead with expert articles and strategies to grow your business.
+          <p className="text-secondary text-lg font-medium max-w-md">
+            Stay ahead with expert articles and strategies.
           </p>
 
-          <div className="flex justify-center md:justify-start gap-4 animate-fade-in delay-300">
+          <div className="flex justify-center md:justify-start gap-4">
+
+            {/* ✅ FIXED BUTTON */}
             <Button
               rounded="rounded-2xl"
               size="hero"
-              onClick={() => document.getElementById('blog-section')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() =>
+                document
+                  .getElementById("blog-section")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
             >
               Explore Blogs
             </Button>
+
             <Button
               variant="outline"
               size="hero"
               rounded="rounded-2xl"
-              className="border-gray-500 text-secondary hover:bg-blue-100 hover:text-primary"
             >
               Latest Posts
             </Button>
           </div>
         </div>
 
-        {/* RIGHT GLASS CARD */}
-        <div className="animate-slide-in-right delay-300">
-          <div className="bg-white/50 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300">
-            <h3 className="text-gray-900 text-lg max-w-2xl font-semibold mb-4">
-              Trending Topics
-            </h3>
+        {/* RIGHT */}
+        <div>
+          <div className="bg-white/50 backdrop-blur-xl p-6 rounded-2xl">
+            <h3 className="text-lg font-semibold mb-4">Trending Topics</h3>
 
             <div className="space-y-3">
               {topics.map(({ icon: Icon, text }, i) => (
                 <div
                   key={i}
-                  className="group flex items-center gap-3 max-w-2xl rounded-xl bg-white/80 p-3 text-lg cursor-pointer transition hover:bg-primary"
+                  className="flex items-center gap-3 p-3 bg-white/80 rounded-xl"
                 >
-                  <Icon className="text-primary transition group-hover:text-white" />
-
-                  <span className="text-gray-800 transition group-hover:text-white">
-                    {text}
-                  </span>
+                  <Icon className="text-primary" />
+                  <span>{text}</span>
                 </div>
               ))}
             </div>
