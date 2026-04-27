@@ -214,8 +214,8 @@ const TeamMembers = () => {
         const transition = isDragging.current ? '0.12s' : (momentumRef.current ? '0.06s' : isAutoSliding.current ? '0.8s' : '0.4s');
 
         // On mobile, only show the active card (and the one transitioning)
-        const opacity = isMobile 
-            ? (abs > 0.95 ? 0 : 1) 
+        const opacity = isMobile
+            ? (abs > 0.95 ? 0 : 1)
             : Math.max(0, 1 - abs * 0.25);
 
         const scale = isMobile
@@ -265,8 +265,8 @@ const TeamMembers = () => {
                                     className="absolute [transform-style:preserve-3d]"
                                     style={getCardStyle(index)}
                                 >
-                                    <div className="relative w-[260px] h-[390px] md:w-[280px] md:h-[460px] rounded-[30px] p-[2px] bg-gradient-to-br from-[#2a9fd8]/40 to-transparent shadow-2xl overflow-hidden backdrop-blur-sm">
-                                        <div className="w-full h-full rounded-[28px] overflow-hidden bg-white relative group">
+                                    <div className="relative w-[80px] h-[440px] md:w-[280px] md:h-[460px] rounded-[40px] p-[2px] bg-gradient-to-br from-[#2a9fd8]/40 to-transparent shadow-2xl overflow-hidden backdrop-blur-sm">
+                                        <div className="w-full h-full rounded-[38px] overflow-hidden bg-white relative group">
                                             <img
                                                 src={dev.image}
                                                 alt={dev.name}
