@@ -5,11 +5,11 @@ const WhyChooseUs = () => {
     const sectionRef = useRef(null);
 
     const advantages = [
-        { number: '01', title: 'Expert Software Engineers' },
-        { number: '02', title: 'Cutting-Edge Technology' },
-        { number: '03', title: 'Scalable Digital Solutions' },
-        { number: '04', title: 'On-Time Project Delivery' },
-        { number: '05', title: '24/7 Technical Support' }
+        { number: '01', title: 'Engineering-first development approach' },
+        { number: '02', title: 'Scalable and maintainable architecture' },
+        { number: '03', title: 'Strong backend and system design expertise' },
+        { number: '04', title: 'Transparent communication and delivery' },
+        { number: '05', title: 'Focus on long-term business impact' }
     ];
 
     useEffect(() => {

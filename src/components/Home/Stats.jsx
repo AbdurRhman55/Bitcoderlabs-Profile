@@ -65,8 +65,8 @@ const Stats = () => {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-                    <StatCounter end={12} suffix="+" label="Years Experience" />
-                    <StatCounter end={200} suffix="+" label="Projects Delivered" />
+                    <StatCounter end={10} suffix="+" label="Years Experience" />
+                    <StatCounter end={100} suffix="+" label="Projects Delivered" />
                     <StatCounter end={15} suffix="+" label="Expert Mentors" />
                     <StatCounter end={98} suffix="%" label="Client Retention" />
                 </div>

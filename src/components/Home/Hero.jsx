@@ -21,15 +21,16 @@ const HeroSection = () => {
             {/* Main Content */}
             <div className="relative z-10 flex flex-col items-center justify-center pt-32 lg:pt-38 pb-20 w-full h-full">
                 {/* Hero Headers */}
-                <div className="text-center px-4 max-w-5xl">
-                    <h1 className="text-5xl md:text-6xl font-black text-white mb-4 leading-tight tracking-tight animate-fade-in">
-                        More growth, <span className="text-white">less work</span>
+                <div className="text-center px-4 max-w-6xl">
+                    <h1 className="text-3xl md:text-6xl font-black text-white mb-4 leading-tight tracking-tight animate-fade-in">
+                        Custom Software Development Company for Scalable Digital Solutions
                     </h1>
-                    <h2 className="text-5xl md:text-6xl font-black text-white mb-10 leading-tight tracking-tight mt-[-10px] animate-fade-in delay-100">
-                        Get your time back
-                    </h2>
-                    <p className="text-lg md:text-xl text-white max-w-3xl mx-auto leading-relaxed mb-10 font-medium opacity-90 animate-fade-in delay-200">
-                        Time is money, and our automation solutions help you save both. Automate your most repetitive tasks, reduce operational costs, and watch as your team's productivity soars.
+                    
+                    <p className="text-lg md:text-xl text-white max-w-6xl mx-auto leading-relaxed  font-medium opacity-90 animate-fade-in delay-200">
+                        We design and develop high-performance web, mobile, and AI-powered applications tailored to your business needs. Build secure, scalable, and future-ready software with a team that understands both technology and business.
+                    </p>
+                    <p className="text-lg md:text-xl text-white max-w-6xl mx-auto leading-relaxed mb-10 font-medium opacity-90 animate-fade-in delay-200">
+                        From concept to deployment, we deliver reliable digital products that drive growth and efficiency.
                     </p>
                     <Button
                         to="/contact"

@@ -17,26 +17,26 @@ const ExpertiseSectionUnique = () => {
     const services = [
         {
             icon: <FiMonitor size={28} />,
-            title: 'Web Development',
-            description: 'Custom web applications built with cutting-edge technologies, delivering responsive and scalable solutions.',
+            title: 'Custom Software Development',
+            description: 'Tailored software solutions designed to match your business processes, ensuring scalability, performance, and long-term reliability.',
             image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=600&fit=crop'
         },
         {
             icon: <FiSmartphone size={28} />,
-            title: 'Mobile Apps',
-            description: 'Native and cross-platform mobile applications that provide seamless user experiences on iOS and Android.',
+            title: 'Mobile App Development',
+            description: 'User-friendly and scalable mobile apps for iOS and Android that enhance customer engagement.',
             image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop'
         },
         {
             icon: <FiLayout size={28} />,
-            title: 'UI/UX Design',
-            description: 'Beautiful, intuitive interfaces designed with user-centric approach to maximize engagement and satisfaction.',
+            title: 'Web Application Development',
+            description: 'Modern, responsive, and high-performance web applications built with cutting-edge technologies.',
             image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop'
         },
         {
             icon: <FiCode size={28} />,
-            title: 'Custom Software',
-            description: 'Tailored software solutions designed to solve your unique business challenges and streamline operations.',
+            title: 'AI & Automation Solutions',
+            description: 'Leverage artificial intelligence to automate workflows, improve efficiency, and gain actionable insights.',
             image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop'
         },
         // {
@@ -47,8 +47,8 @@ const ExpertiseSectionUnique = () => {
         // },
         {
             icon: <FiShoppingCart size={28} />,
-            title: 'E-Commerce',
-            description: 'Complete e-commerce platforms with secure payment integration and inventory management systems.',
+            title: 'API & Backend Development',
+            description: 'Secure and scalable backend systems powering complex applications and integrations.',
             image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop'
         },
         // {
@@ -59,8 +59,8 @@ const ExpertiseSectionUnique = () => {
         // },
         {
             icon: <FiTool size={28} />,
-            title: 'Maintenance & Support',
-            description: 'Ongoing technical support and maintenance to keep your applications running smoothly 24/7.',
+            title: 'Cloud & DevOps Solutions',
+            description: 'Cloud-native deployment, infrastructure management, and DevOps practices to ensure performance and scalability.',
             image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop'
         }
     ];
