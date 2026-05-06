@@ -47,21 +47,21 @@ const VisionMissionSection = () => {
             title: 'VISION',
             titleColor: '#2a9fd8',
             bgColor: '#2a9fd8',
-            description: 'TO BE A TRUSTED NAME KNOWN FOR QUALITY, RELIABILITY, AND CUSTOMER SATISFACTION.'
+            description: 'To be a trusted, globally recognized name for quality, reliability, and customer satisfaction.'
         },
         {
             icon: <FiTarget size={36} />,
             title: 'MISSION',
             titleColor: '#1e293b',
             bgColor: '#1e293b',
-            description: 'DELIVER VALUABLE PRODUCTS/SERVICES THAT MAKE EVERYDAY LIFE BETTER, THROUGH INNOVATION, COMMITMENT & CARE.'
+            description: 'To deliver valuable products and services that improve everyday life through innovation and dedication.'
         },
         {
             icon: <FiHeart size={36} />,
             title: 'VALUES',
             titleColor: '#2a9fd8',
             bgColor: '#0ea5e9',
-            description: 'WE VALUE FRESH IDEAS, STRONG TEAMWORK, AND THE DRIVE TO CONSTANTLY IMPROVE AND GROW — TOGETHER.'
+            description: 'We value fresh ideas, teamwork, and continuous growth striving for excellence together.'
         }
     ];
 
@@ -80,8 +80,8 @@ const VisionMissionSection = () => {
                             <span className="text-gray-300 italic">Foundation</span>
                         </h2>
                     </div>
-                    <p className="text-sm md:text-base text-gray-400 font-medium uppercase tracking-widest max-w-2xl mx-auto leading-relaxed">
-                        Architecting the future through precision, purpose-driven strategy, and a relentless pursuit of engineering excellence.
+                    <p className="text-sm  md:text-base text-gray-400 font-medium uppercase tracking-widest max-w-2xl mx-auto leading-relaxed">
+                        Architecting the future through precision, purpose-driven strategy, and a commitment to innovation, efficiency, and engineering excellence.
                     </p>
                 </div>
                 <div className="flex flex-col lg:flex-row gap-24 lg:gap-12 items-center">

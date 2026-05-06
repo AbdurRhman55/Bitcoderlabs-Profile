@@ -6,32 +6,32 @@ const services = [
     {
         id: '01',
         icon: FiMonitor,
-        title: 'Web Development',
-        short: 'React · Laravel · Modern Stack',
+        title: 'Custom Software Development',
+        short: 'Tailored · Scalable · Reliable',
         description:
-            'Custom websites and web applications built with React, Laravel, and modern technologies. Blazing fast, pixel-perfect, and built to scale.',
+            'Custom-built software solutions designed to match your business processes, ensuring scalability, performance, and long-term reliability.',
         accent: '#2a9fd8',
         tag: 'Most Popular',
     },
     {
         id: '02',
         icon: FiShoppingCart,
-        title: 'E-Commerce Development',
-        short: 'Stores · Payments · Inventory',
+        title: 'Mobile App Development',
+        short: 'iOS · Android · User-Friendly',
         description:
-            'Complete online store solutions with secure payment integration, smart inventory management, and conversion-optimized UX.',
+            'User-friendly and scalable mobile applications for iOS and Android that enhance engagement and deliver seamless experiences.',
         accent: '#2a9fd8',
         tag: 'High Demand',
     },
     {
         id: '03',
         icon: FiSmartphone,
-        title: 'Responsive UI/UX Design',
-        short: 'Figma · Prototyping · Design Systems',
+        title: 'Web Application Development',
+        short: 'React · Performance · Responsive',
         description:
-            'Modern, clean, and user-friendly interfaces. Every pixel crafted with intent — from wireframe to final handoff.',
+            'High-performance, responsive web applications built with cutting-edge technologies for speed, scalability, and modern UX.',
         accent: '#2a9fd8',
-        tag: 'Creative',
+        tag: 'Modern Stack',
     },
     {
         id: '04',

@@ -123,9 +123,7 @@ const ServicesHero = () => {
                     </h1>
 
                     <p className="text-gray-300 text-lg leading-relaxed mb-4 lg:mb-8 max-w-md mx-auto lg:mx-0">
-                        Transform your business with our expert digital solutions. Our skilled team
-                        ensures precision and quality, delivering scalable, modern applications that
-                        require minimal effort and perform perfectly year-round.
+                       We design and develop custom software solutions tailored to your business requirements, ensuring scalability, performance, and long-term success, while delivering seamless user experiences.
                     </p>
 
                     <div className="flex items-center justify-center lg:justify-start gap-10 mb-8 lg:mb-10">

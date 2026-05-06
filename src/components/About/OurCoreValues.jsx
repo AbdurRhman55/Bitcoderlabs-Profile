@@ -13,31 +13,31 @@ const OurCoreValues = () => {
             icon: <FiTrendingUp size={48} />,
             title: 'Progressive',
             bgColor: '#808080',
-            description: 'This slide is 100% editable. Adjust it as per your requirements and catches your viewers consideration.'
+            description: 'We embrace change and continuously evolve to stay ahead.'
         },
         {
             icon: <IoBulbOutline size={48} />,
             title: 'Innovation',
             bgColor: '#4FC3F7',
-            description: 'This slide is 100% editable. Adjust it as per your requirements and catches your viewers consideration.'
+            description: 'We turn creative ideas into powerful digital solutions.'
         },
         {
             icon: <IoThumbsUpOutline size={48} />,
             title: 'Reliability',
             bgColor: '#4DB6AC',
-            description: 'This slide is 100% editable. Adjust it as per your requirements and catches your viewers consideration.'
+            description: 'We deliver consistent, dependable results you can trust.'
         },
         {
             icon: <IoRibbonOutline size={48} />,
             title: 'Quality',
             bgColor: '#26596D',
-            description: 'This slide is 100% editable. Adjust it as per your requirements and catches your viewers consideration.'
+            description: 'We maintain high standards in every product we build.'
         },
         {
             icon: <IoPeopleOutline size={48} />,
             title: 'Team Work',
             bgColor: '#FFB84D',
-            description: 'This slide is 100% editable. Adjust it as per your requirements and catches your viewers consideration.'
+            description: 'We collaborate to achieve shared success and growth.'
         }
     ];
 
@@ -52,11 +52,7 @@ const OurCoreValues = () => {
                             Our Core Values
                         </h2>
                         <p className="text-gray-500 leading-relaxed text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                            esse cillum dolore eu fugiat nulla pariatur.
+                            At BitcoderLabs, our values shape every line of code and every solution we create. We believe in innovation that inspires, quality that delivers, and integrity that builds lasting trust. Our team is driven by collaboration, creativity, and a passion for continuous growth in a rapidly evolving digital world. We are committed to putting our clients first—delivering reliable, impactful, and future-ready solutions while fostering long-term partnerships built on trust and excellence.
                         </p>
                     </div>
 

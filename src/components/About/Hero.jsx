@@ -101,12 +101,12 @@ const Hero = () => {
                     {/* Right Column - Centered Professional Intro */}
                     <div className={`w-full lg:w-1/2 transition-all duration-1000 delay-300 transform ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}>
                         <div className="relative">
-                            <p className="text-2xl md:text-3xl text-gray-800 leading-tight font-light tracking-tight lg:pl-4">
-                                Bitcoderlabs is a premier software engineering firm dedicated to architecting the
-                                <span className="font-bold text-gray-900"> future of digital commerce </span>
-                                and enterprise solutions. We combine technical precision with creative strategy to deliver
-                                <span className="text-primary italic font-medium"> scalable global products </span>
-                                that drive measurable business transformation.
+                            <p className="text-2xl  md:text-3xl text-gray-800 leading-tight font-light tracking-tight lg:pl-4">
+                                BitcoderLabs Pvt Ltd is a software development company specializing in building
+                                <span className="font-bold text-gray-900"> scalable, high-performance  </span>
+                                digital solutions for 
+                                <span className="text-primary italic font-medium"> startups and enterprises </span>
+                                worldwide.We focus on delivering reliable and innovative applications that help businesses grow and succeed in the digital world.
                             </p>
                             <div className="mt-10 lg:pl-4">
                                 <Button
